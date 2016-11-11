@@ -14,8 +14,9 @@ def sign_in():
         id = request.json["id"]
         username = request.json["username"]
         email = request.json["email"]
-        sql_query = "SELECT * FROM user WHERE id='%s'" % id
+        sql_query = "SELECT * FROM user WHERE email='%s'" % email
         cursor.execute(sql_query)
+	print (cursor.rowcount)
         if cursor.rowcount == 0:
             sql_query = "INSERT INTO user(id, username, email) values('%s', '%s', '%s')" % (id, username, email)
             cursor.execute(sql_query)
