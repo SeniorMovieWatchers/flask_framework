@@ -1,6 +1,6 @@
-$("#search").click(function() {
+$("#search-movie").click(function() {
     var new_data = {
-        keyword: $("#search_text").val()
+        keyword: $("#search-text").val()
     };
     
     $.ajax({
@@ -9,7 +9,18 @@ $("#search").click(function() {
             type: 'POST',
             contentType: 'application/json; charset=utf-8',
             success: function(result) {
-                console.log(result);
+                movie_list = result['movie_list'];
+                var i;
+                for(i = 1; i <= movie_list.length; i++){
+                    var imageid = "img" + i;
+                    var titleid = "movie-title-" + i;
+                    var ratingid = "rating-" + i;
+                    var plotid = "movie-plot-" + i;
+                    $("#"+imageid).attr("src", movie_list[i-1]['url']);
+                    $("#"+titleid).val(movie_list[i-1]['title']);
+                    $("#"+ratingid).val(movie_list[i-1]['rating']);
+                    $("#"+plotid).val(movie_list[i-1]['plot']);
+                }
             },
             data: JSON.stringify(new_data)
         });

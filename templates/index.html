@@ -118,6 +118,10 @@
             #header2 {
                 margin-top: -45px;
             }
+            
+            #search-text {
+                width: 300px;
+            }
 
         </style>
     </head>
@@ -152,52 +156,10 @@
           <form id="search-form" class="form-inline">
               <div class="form-group">
                 <div class="input-group">
-                  <input type="text" class="form-control" id="search_text" placeholder="Enter movie name">
+                  <input type="text" class="form-control" id="search-text" placeholder="Enter movie name">
                 </div>
               </div>
-              <button type="submit" id="search-submit" class="btn btn-primary">Search</button>
-          </form>
-        </div>
-        
-        <div id="signup-jumbotron" class="jumbotron jumbotron-fluid">
-          <h1 id="header1" class="display-3">Create Account</h1>
-          <hr class="m-y-2">
-            
-          <form id="signup-form">
-              <div class="form-group">
-                <label for="name">Name</label>
-                <input type="name" class="form-control" id="name" placeholder="Name">
-              </div>
-              <div class="form-group">
-                <label for="email">Email address</label>
-                <input type="email" class="form-control" id="email" placeholder="Email">
-              </div>
-              <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Password">
-              </div>
-              <div class="form-group">
-                <label for="passwordConfirm">Confirm Password</label>
-                <input type="password" class="form-control" id="passwordConfirm" placeholder="Confirm Password">
-              </div>
-              <button type="button" id="submit-signup" class="btn btn-default">Submit</button>
-          </form>
-        </div>
-        
-        <div id="update-jumbotron" class="jumbotron jumbotron-fluid">  
-          <h1 id="header1" class="display-3">Update Account</h1>
-          <hr class="m-y-2">
-          
-          <form id="signup-form">
-              <div class="form-group">
-                <label for="name">New Name</label>
-                <input type="name" class="form-control" id="name" placeholder="Name">
-              </div>
-              <div class="form-group">
-                <label for="email">Email address</label>
-                <input type="email" class="form-control" id="test-email" placeholder="Email">
-              </div>
-              <button type="button" id="submit-update" class="btn btn-default">Submit</button>
+              <button type="submit" id="search-movie" class="btn btn-primary">Search</button>
           </form>
         </div>
         
@@ -205,12 +167,12 @@
         <div id="search-movie-results">
             <div class="movie-info" id="movie-1">
                 <div class="movie-image">
-                    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY1NDI1Nzg4OF5BMl5BanBnXkFtZTgwNjYxOTg4ODE@._V1_UX140_CR0,0,140,209_AL_.jpg">
+                    <img id="img-1" src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY1NDI1Nzg4OF5BMl5BanBnXkFtZTgwNjYxOTg4ODE@._V1_UX140_CR0,0,140,209_AL_.jpg">
                 </div>
                 <div class="movie-description">
-                    <p class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
-                    <p class="rating">Metascore: 54/100</p>
-                    <p class="movie-plot">
+                    <p id="movie-title-1" class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
+                    <p class="rating">Metascore: <span id="rating-1">54/100</span> </p>
+                    <p id="movie-plot-1" class="movie-plot">
                         19-year-old Billy Lynn is brought home for a victory tour after a harrowing Iraq battle. Through flashbacks the film shows what really happened to his squad - contrasting the realities of war with America's perceptions.
                     </p>
                     <p class="movie-actors"><b>Stars:</b> Joe Alwyn, Garrett Hedlund, Arturo Castro, Mason Lee</p>
@@ -218,12 +180,12 @@
             </div>
             <div class="movie-info" id="movie-2">
                 <div class="movie-image">
-                    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY1NDI1Nzg4OF5BMl5BanBnXkFtZTgwNjYxOTg4ODE@._V1_UX140_CR0,0,140,209_AL_.jpg">
+                    <img id="img-2" src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY1NDI1Nzg4OF5BMl5BanBnXkFtZTgwNjYxOTg4ODE@._V1_UX140_CR0,0,140,209_AL_.jpg">
                 </div>
                 <div class="movie-description">
-                    <p class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
-                    <p class="rating">Metascore: 54/100</p>
-                    <p class="movie-plot">
+                    <p id="movie-title-2" class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
+                    <p class="rating">Metascore: <span id="rating-2">54/100</span> </p>
+                    <p id="movie-plot-2" class="movie-plot">
                         19-year-old Billy Lynn is brought home for a victory tour after a harrowing Iraq battle. Through flashbacks the film shows what really happened to his squad - contrasting the realities of war with America's perceptions.
                     </p>
                     <p class="movie-actors"><b>Stars:</b> Joe Alwyn, Garrett Hedlund, Arturo Castro, Mason Lee</p>
@@ -231,12 +193,12 @@
             </div>
             <div class="movie-info" id="movie-3">
                 <div class="movie-image">
-                    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY1NDI1Nzg4OF5BMl5BanBnXkFtZTgwNjYxOTg4ODE@._V1_UX140_CR0,0,140,209_AL_.jpg">
+                    <img id="img-3" src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY1NDI1Nzg4OF5BMl5BanBnXkFtZTgwNjYxOTg4ODE@._V1_UX140_CR0,0,140,209_AL_.jpg">
                 </div>
                 <div class="movie-description">
-                    <p class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
-                    <p class="rating">Metascore: 54/100</p>
-                    <p class="movie-plot">
+                    <p id="movie-title-3" class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
+                    <p class="rating">Metascore: <span id="rating-3">54/100</span> </p>
+                    <p id="movie-plot-3" class="movie-plot">
                         19-year-old Billy Lynn is brought home for a victory tour after a harrowing Iraq battle. Through flashbacks the film shows what really happened to his squad - contrasting the realities of war with America's perceptions.
                     </p>
                     <p class="movie-actors"><b>Stars:</b> Joe Alwyn, Garrett Hedlund, Arturo Castro, Mason Lee</p>
@@ -244,12 +206,12 @@
             </div>
             <div class="movie-info" id="movie-4">
                <div class="movie-image">
-                    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY1NDI1Nzg4OF5BMl5BanBnXkFtZTgwNjYxOTg4ODE@._V1_UX140_CR0,0,140,209_AL_.jpg">
+                    <img id="img-4" src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY1NDI1Nzg4OF5BMl5BanBnXkFtZTgwNjYxOTg4ODE@._V1_UX140_CR0,0,140,209_AL_.jpg">
                 </div>
                 <div class="movie-description">
-                    <p class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
-                    <p class="rating">Metascore: 54/100</p>
-                    <p class="movie-plot">
+                    <p id="movie-title-4" class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
+                    <p class="rating">Metascore: <span id="rating-4">54/100</span> </p>
+                    <p id="movie-plot-4" class="movie-plot">
                         19-year-old Billy Lynn is brought home for a victory tour after a harrowing Iraq battle. Through flashbacks the film shows what really happened to his squad - contrasting the realities of war with America's perceptions.
                     </p>
                     <p class="movie-actors"><b>Stars:</b> Joe Alwyn, Garrett Hedlund, Arturo Castro, Mason Lee</p>
@@ -257,12 +219,12 @@
             </div>
             <div class="movie-info" id="movie-5">
                 <div class="movie-image">
-                    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY1NDI1Nzg4OF5BMl5BanBnXkFtZTgwNjYxOTg4ODE@._V1_UX140_CR0,0,140,209_AL_.jpg">
+                    <img id="img-5" src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY1NDI1Nzg4OF5BMl5BanBnXkFtZTgwNjYxOTg4ODE@._V1_UX140_CR0,0,140,209_AL_.jpg">
                 </div>
                 <div class="movie-description">
-                    <p class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
-                    <p class="rating">Metascore: 54/100</p>
-                    <p class="movie-plot">
+                    <p id="movie-title-5" class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
+                    <p class="rating">Metascore: <span id="rating-5">54/100</span> </p>
+                    <p id="movie-plot-5" class="movie-plot">
                         19-year-old Billy Lynn is brought home for a victory tour after a harrowing Iraq battle. Through flashbacks the film shows what really happened to his squad - contrasting the realities of war with America's perceptions.
                     </p>
                     <p class="movie-actors"><b>Stars:</b> Joe Alwyn, Garrett Hedlund, Arturo Castro, Mason Lee</p>
