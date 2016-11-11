@@ -43,6 +43,10 @@ def search_movie():
             actors = []
             for cast in casts:
                 actors.append(cast[0])
+            
+            sql_query = "SELECT rating FROM ratings WHERE movie_id = %s" % id
+            cusor.execute(sql_query)
+            rating = cursor.fetchone()[0]
             movie = {
                 "id" : row[0],
                 "title": row[1],
@@ -51,7 +55,8 @@ def search_movie():
                 "plot": row[5],
                 "genre": row[6],
                 "language": row[7],
-                "casts": actors
+                "casts": actors,
+                "rating": rating
             }
             movie_list.append(movie)
         result = {"movie_list": movie_list}
