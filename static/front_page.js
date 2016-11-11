@@ -8,6 +8,9 @@ $("#search").click(function() {
             dataType: 'JSON',
             type: 'POST',
             contentType: 'application/json; charset=utf-8',
+            success: function(result) {
+                console.log(result);
+            }
             data: JSON.stringify(new_data)
         });
 });

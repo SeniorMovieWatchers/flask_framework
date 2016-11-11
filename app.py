@@ -31,7 +31,20 @@ def search_movie():
         sql_query = "SELECT * FROM movie WHERE title LIKE '%" + keyword +"%'"
         cursor.execute(sql_query)
         rows = cursor.fetchmany(size=5)
-        print (rows)
+        movie_list = []
+        for row in rows:
+            movie = {
+                "id" : row[0],
+                "title": row[1],
+                "year": row[2],
+                "url": row[3],
+                "plot": row[5],
+                "genre": row[6],
+                "language": row[7]
+            }
+            movie_list.append(movie)
+        result = {"movie_list": user_list}
+        return jsonify(result)
     return "Unsuccessful POST request"
 
 
