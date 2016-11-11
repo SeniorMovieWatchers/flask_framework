@@ -100,24 +100,28 @@ $("#duplicate-email").click(function() {
 });
 
 
-    $("#submit-signup").click(function() {
-    var new_data = {
-            username : $("#name").val(),
-            email : $("#email").val(),
-            password : $("#password").val()
-        };
+$("#submit-signup").click(function() {
+var new_data = {
+        username : $("#name").val(),
+        email : $("#email").val(),
+        password : $("#password").val()
+    };
 
-        $.ajax({
-            url: 'http://fa16-cs411-50.cs.illinois.edu/home/new-user',
-            dataType: 'JSON',
-            type: 'POST',
-            contentType: 'application/json; charset=utf-8',
-            success: function(result){
-                $("#query-executed").html(result['query']);
-            },
-            data: JSON.stringify(new_data)
-        });
+    $.ajax({
+        url: 'http://fa16-cs411-50.cs.illinois.edu/home/new-user',
+        dataType: 'JSON',
+        type: 'POST',
+        contentType: 'application/json; charset=utf-8',
+        success: function(result){
+            $("#query-executed").html(result['query']);
+        },
+        data: JSON.stringify(new_data)
+    });
 });
+
+/*$("#search-submit").click(function(){
+    
+});*/
 
 $("#submit-update").click(function(){
 

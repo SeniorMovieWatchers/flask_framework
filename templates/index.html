@@ -1,79 +1,125 @@
 <!DOCTYPE HTML>
 <html>
    <head>
-   <title>Netflix and Chill</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> 
-    
-    <!-- Required meta tags always come first -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+       <title>Netflix and Chill</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> 
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
-    
-    <style type="text/css">
+        <!-- Required meta tags always come first -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-        #search-jumbotron {
-            background-size: cover;
-            background-color: #303030;
-            color: white;
-            text-align: center;
-            margin: 0;  
-        }
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
 
-        #signup-jumbotron {
-            display: none;
-            background-size: cover;
-            background-color: #303030;
-            color: white;
-            text-align: center;
-            margin: 0; 
-        }
+        <style type="text/css">
 
-        #update-jumbotron {
-            display: none;
-            background-size: cover;
-            background-color: #303030;
-            color: white;
-            text-align: center;
-            margin: 0; 
-        }
+            #search-jumbotron {
+                background-size: cover;
+                background-color: #303030;
+                color: white;
+                text-align: center;
+                margin: 0;  
+            }
+            
+            #recomendations-jumbotron {
+                background-size: cover;
+                background-color: #303030;
+                color: white;
+                text-align: center;
+                margin: 0;  
+            }
 
-        #header1 {
-            margin-top: 45px;
-        }
+            #signup-jumbotron {
+                display: none;
+                background-size: cover;
+                background-color: #303030;
+                color: white;
+                text-align: center;
+                margin: 0; 
+            }
 
-        #search {
-            width: 300px;
-        }
+            #update-jumbotron {
+                display: none;
+                background-size: cover;
+                background-color: #303030;
+                color: white;
+                text-align: center;
+                margin: 0; 
+            }
 
-        #nav-target {
-            height: 55px;
-        }
+            #header1 {
+                margin-top: 45px;
+            }
 
-        #signup-form {
-            width: 500px;
-            margin: 0 auto;
-        }
+            #search {
+                width: 300px;
+            }
 
-        #search-users {
-            margin: 15 0 0 10;
-        }
+            #nav-target {
+                height: 55px;
+            }
 
-        #results {
-            width: 350px;
-        }
+            #signup-form {
+                width: 500px;
+                margin: 0 auto;
+            }
 
-        #edit-account{
-            display: none;
-        }
+            #search-users {
+                margin: 15 0 0 10;
+            }
 
-        #logout {
-            display: none;
-        }
+            #results {
+                width: 350px;
+            }
 
-    </style>
+            #edit-account{
+                display: none;
+            }
+
+            #logout {
+                display: none;
+            }
+            
+            .movie-info {
+                background-color: #F6F6F5;
+                margin: 20px 20px 20px 20px;
+                height: 220px;
+            }
+            
+            .movie-image {
+                float: left;
+                margin-top: 5px;
+            }
+            
+            .movie-description {
+                width: 800px;
+                float: left;
+                margin-left: 15px;
+            }
+            
+            .movie-title {
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+            
+            .rating {
+                margin-bottom: 6px;
+            }
+            
+            .movie-director {
+                margin-bottom: 6px;
+            }
+            
+            .movie-actors {
+                margin-bottom: 6px;
+            }
+            
+            #header2 {
+                margin-top: -45px;
+            }
+
+        </style>
     </head>
     
     <body data-spy="scroll" data-target="#nav-target" data-offset="50">
@@ -109,7 +155,7 @@
                   <input type="text" class="form-control" id="search" placeholder="Enter movie name">
                 </div>
               </div>
-              <button type="submit" class="btn btn-primary">Search</button>
+              <button type="submit" id="search-submit" class="btn btn-primary">Search</button>
           </form>
         </div>
         
@@ -155,6 +201,86 @@
           </form>
         </div>
         
+        
+        <div id="search-movie-results">
+            <div class="movie-info" id="movie-1">
+                <div class="movie-image">
+                    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY1NDI1Nzg4OF5BMl5BanBnXkFtZTgwNjYxOTg4ODE@._V1_UX140_CR0,0,140,209_AL_.jpg">
+                </div>
+                <div class="movie-description">
+                    <p class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
+                    <p class="rating">Metascore: 54/100</p>
+                    <p class="movie-plot">
+                        19-year-old Billy Lynn is brought home for a victory tour after a harrowing Iraq battle. Through flashbacks the film shows what really happened to his squad - contrasting the realities of war with America's perceptions.
+                    </p>
+                    <p class="movie-actors"><b>Stars:</b> Joe Alwyn, Garrett Hedlund, Arturo Castro, Mason Lee</p>
+                </div>
+            </div>
+            <div class="movie-info" id="movie-2">
+                <div class="movie-image">
+                    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY1NDI1Nzg4OF5BMl5BanBnXkFtZTgwNjYxOTg4ODE@._V1_UX140_CR0,0,140,209_AL_.jpg">
+                </div>
+                <div class="movie-description">
+                    <p class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
+                    <p class="rating">Metascore: 54/100</p>
+                    <p class="movie-plot">
+                        19-year-old Billy Lynn is brought home for a victory tour after a harrowing Iraq battle. Through flashbacks the film shows what really happened to his squad - contrasting the realities of war with America's perceptions.
+                    </p>
+                    <p class="movie-actors"><b>Stars:</b> Joe Alwyn, Garrett Hedlund, Arturo Castro, Mason Lee</p>
+                </div>
+            </div>
+            <div class="movie-info" id="movie-3">
+                <div class="movie-image">
+                    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY1NDI1Nzg4OF5BMl5BanBnXkFtZTgwNjYxOTg4ODE@._V1_UX140_CR0,0,140,209_AL_.jpg">
+                </div>
+                <div class="movie-description">
+                    <p class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
+                    <p class="rating">Metascore: 54/100</p>
+                    <p class="movie-plot">
+                        19-year-old Billy Lynn is brought home for a victory tour after a harrowing Iraq battle. Through flashbacks the film shows what really happened to his squad - contrasting the realities of war with America's perceptions.
+                    </p>
+                    <p class="movie-actors"><b>Stars:</b> Joe Alwyn, Garrett Hedlund, Arturo Castro, Mason Lee</p>
+                </div>
+            </div>
+            <div class="movie-info" id="movie-4">
+               <div class="movie-image">
+                    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY1NDI1Nzg4OF5BMl5BanBnXkFtZTgwNjYxOTg4ODE@._V1_UX140_CR0,0,140,209_AL_.jpg">
+                </div>
+                <div class="movie-description">
+                    <p class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
+                    <p class="rating">Metascore: 54/100</p>
+                    <p class="movie-plot">
+                        19-year-old Billy Lynn is brought home for a victory tour after a harrowing Iraq battle. Through flashbacks the film shows what really happened to his squad - contrasting the realities of war with America's perceptions.
+                    </p>
+                    <p class="movie-actors"><b>Stars:</b> Joe Alwyn, Garrett Hedlund, Arturo Castro, Mason Lee</p>
+                </div>
+            </div>
+            <div class="movie-info" id="movie-5">
+                <div class="movie-image">
+                    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY1NDI1Nzg4OF5BMl5BanBnXkFtZTgwNjYxOTg4ODE@._V1_UX140_CR0,0,140,209_AL_.jpg">
+                </div>
+                <div class="movie-description">
+                    <p class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
+                    <p class="rating">Metascore: 54/100</p>
+                    <p class="movie-plot">
+                        19-year-old Billy Lynn is brought home for a victory tour after a harrowing Iraq battle. Through flashbacks the film shows what really happened to his squad - contrasting the realities of war with America's perceptions.
+                    </p>
+                    <p class="movie-actors"><b>Stars:</b> Joe Alwyn, Garrett Hedlund, Arturo Castro, Mason Lee</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="recomendations-jumbotron" class="jumbotron jumbotron-fluid">
+          <h1 id="header2" class="display-5">Recomendations</h1>
+          <hr class="m-y-2">
+            
+          <form id="search-form" class="form-inline">
+              <p>"The system will recommend movies here but this function is not yet implemented !"</p>
+          </form>
+        </div>
+        
+
+        <!--
         <div id="search-users">
             <div id="data-search">
                 <h2>Search for users on the website</h2>
@@ -181,7 +307,9 @@
             </div>
             <h5>Executed Query:</h5>
             <p id="query-executed"></p>
-        </div>
+        </div> 
+        -->
+
     </body>
     
     <script src="{{ url_for('static', filename='front_page.js') }}"></script>
