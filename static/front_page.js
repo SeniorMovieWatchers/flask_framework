@@ -9,17 +9,22 @@ $("#search-movie").click(function() {
             type: 'POST',
             contentType: 'application/json; charset=utf-8',
             success: function(result) {
+                $("#recomendations-jumbotron").attr("display", "block");
                 movie_list = result['movie_list'];
                 var i;
                 for(i = 1; i <= movie_list.length; i++){
+                    var movieid = "movie-" + i;
                     var imageid = "img-" + i;
                     var titleid = "movie-title-" + i;
                     var ratingid = "rating-" + i;
                     var plotid = "movie-plot-" + i;
+                    var actorsid = "actors-" + i;
+                    $("#"+movieid).attr("display", "block");
                     $("#"+imageid).attr("src", movie_list[i-1]['url']);
                     $("#"+titleid).text(movie_list[i-1]['title']);
                     $("#"+ratingid).text(movie_list[i-1]['rating']);
                     $("#"+plotid).text(movie_list[i-1]['plot']);
+                    $("#"+actorsid).text(movie_list[i-1]['casts']);
                 }
             },
             data: JSON.stringify(new_data)
