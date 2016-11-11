@@ -36,8 +36,8 @@ def search_movie():
             id = row[0]
             sql_query = "SELECT person.name FROM person, person_junction " +\
                         "WHERE person.id = person_junction.person_id" +\
-                        "AND person_junction.role = 'cast'" +\
-                        "AND person_junction.movie_id = '%s'" % id
+                        " AND person_junction.role = 'cast'" +\
+                        " AND person_junction.movie_id = %s" % id
             cursor.execute(sql_query)
             casts = cursor.fetchmany(size=4)
             actors = []
