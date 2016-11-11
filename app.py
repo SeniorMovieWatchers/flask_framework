@@ -60,7 +60,7 @@ def search_movie():
                 "title": row[1],
                 "year": row[2],
                 "url": row[3],
-                "plot": row[5],
+                "plot": row[5][:200] + " ...",
                 "genre": row[6],
                 "language": row[7],
                 "casts": actors,
