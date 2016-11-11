@@ -4,12 +4,12 @@ $("#search-movie").click(function() {
     };
     
     $.ajax({
-            url: 'http://fa16-cs411-50.cs.illinois.edu:5000/search-movie',
+            url: 'http://fa16-cs411-50.cs.illinois.edu/home/search-movie',
             dataType: 'JSON',
             type: 'POST',
             contentType: 'application/json; charset=utf-8',
             success: function(result) {
-                $("#recomendations-jumbotron").attr("display", "block");
+                $("#recomendations-jumbotron").css("display", "block");
                 movie_list = result['movie_list'];
                 var i;
                 for(i = 1; i <= movie_list.length; i++){
@@ -19,7 +19,7 @@ $("#search-movie").click(function() {
                     var ratingid = "rating-" + i;
                     var plotid = "movie-plot-" + i;
                     var actorsid = "actors-" + i;
-                    $("#"+movieid).attr("display", "block");
+                    $("#"+movieid).css("display", "block");
                     $("#"+imageid).attr("src", movie_list[i-1]['url']);
                     $("#"+titleid).text(movie_list[i-1]['title']);
                     $("#"+ratingid).text(movie_list[i-1]['rating']);
