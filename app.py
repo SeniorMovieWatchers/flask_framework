@@ -40,6 +40,9 @@ def search_movie():
                         "AND person_junction.movie_id = '%s'" % id
             cursor.execute(sql_query)
             casts = cursor.fetchmany(size=4)
+            actors = []
+            for cast in casts:
+                actors.append(cast[0])
             movie = {
                 "id" : row[0],
                 "title": row[1],
@@ -48,7 +51,7 @@ def search_movie():
                 "plot": row[5],
                 "genre": row[6],
                 "language": row[7],
-                "casts": casts
+                "casts": actors
             }
             movie_list.append(movie)
         result = {"movie_list": movie_list}
