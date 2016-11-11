@@ -10,7 +10,7 @@ $("#search").click(function() {
             contentType: 'application/json; charset=utf-8',
             success: function(result) {
                 console.log(result);
-            }
+            },
             data: JSON.stringify(new_data)
         });
 });
