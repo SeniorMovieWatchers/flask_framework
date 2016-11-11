@@ -1,23 +1,15 @@
-function isEmail(email) {
-    var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-    return regex.test(email);
-}
-
-$("#signup").click(function(){
-    $("#signup-jumbotron").css("display", "block");
-});
-
-$("#edit-account").click(function() {
-    $("#update-jumbotron").css("display", "block");
-});
-
-$("#logout").click(function() {
-    $("#login-button").css("display", "block");
-    $("#signup").css("display", "block");
-    $("#email-text").css("display", "block");
-    $("#password-text").css("display", "block");
-    $("#logout").css("display", "none");
-    $("#edit-account").css("display", "none");
+$("#search").click(function() {
+    var new_data = {
+        keyword: $("#search_text").val()
+    };
+    
+    $.ajax({
+            url: 'http://fa16-cs411-50.cs.illinois.edu:5000/search-movie',
+            dataType: 'JSON',
+            type: 'POST',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(new_data)
+        });
 });
 
 $("#search-user").click(function() {

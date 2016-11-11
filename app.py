@@ -30,7 +30,7 @@ def search_movie():
         keyword = request.json["keyword"]
         sql_query = "SELECT * FROM movie WHERE title LIKE '%" + keyword +"%'"
         cursor.execute(sql_query)
-        rows = cursor.fetchall()
+        rows = cursor.fetchmany(size=5)
         print (rows)
     return "Unsuccessful POST request"
 
