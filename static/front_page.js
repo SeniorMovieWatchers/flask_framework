@@ -12,14 +12,14 @@ $("#search-movie").click(function() {
                 movie_list = result['movie_list'];
                 var i;
                 for(i = 1; i <= movie_list.length; i++){
-                    var imageid = "img" + i;
+                    var imageid = "img-" + i;
                     var titleid = "movie-title-" + i;
                     var ratingid = "rating-" + i;
                     var plotid = "movie-plot-" + i;
                     $("#"+imageid).attr("src", movie_list[i-1]['url']);
-                    $("#"+titleid).val(movie_list[i-1]['title']);
-                    $("#"+ratingid).val(movie_list[i-1]['rating']);
-                    $("#"+plotid).val(movie_list[i-1]['plot']);
+                    $("#"+titleid).text(movie_list[i-1]['title']);
+                    $("#"+ratingid).text(movie_list[i-1]['rating']);
+                    $("#"+plotid).text(movie_list[i-1]['plot']);
                 }
             },
             data: JSON.stringify(new_data)

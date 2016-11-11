@@ -18,7 +18,7 @@ def sign_in():
         email = request.json["email"]
         start_time = time.time()
         sql_query = "SELECT * FROM user WHERE email='%s'" % email
-        print ("user search time " + time.time() - start_time)
+        print ("user search time %s" % (time.time() - start_time))
         cursor.execute(sql_query)
         if cursor.rowcount == 0:
             sql_query = "INSERT INTO user(id, username, email) values('%s', '%s', '%s')" % (id, username, email)
@@ -33,7 +33,7 @@ def search_movie():
         keyword = request.json["keyword"]
         start_time = time.time()
         sql_query = "SELECT * FROM movie WHERE title LIKE '%" + keyword +"%'"
-        print ("movie search time " + time.time() - start_time)
+        print ("movie search time %s" % (time.time() - start_time))
         cursor.execute(sql_query)
         rows = cursor.fetchmany(size=5)
         movie_list = []
@@ -44,7 +44,7 @@ def search_movie():
                         "WHERE person.id = person_junction.person_id" +\
                         " AND person_junction.role = 'cast'" +\
                         " AND person_junction.movie_id = %s" % id
-            print ("join table search time " + time.time() - start_time)
+            print ("join table search time %s" % (time.time() - start_time))
             cursor.execute(sql_query)
             casts = cursor.fetchmany(size=4)
             actors = []
@@ -52,7 +52,7 @@ def search_movie():
                 actors.append(cast[0])
             start_time = time.time()
             sql_query = "SELECT rating FROM ratings WHERE movie_id = %s" % id
-            print ("rating search time " + time.time() - start_time)
+            print ("rating search time %s" % (time.time() - start_time))
             cursor.execute(sql_query)
             rating = cursor.fetchone()[0]
             movie = {
