@@ -2,6 +2,6 @@ import mysql.connector as mariadb
 
 database = mariadb.connect(user='root',
 	password='cs411fa2016',
-	database='imdb')
+	database='movielens')
 
-cursor = database.cursor()
+cursor = database.cursor(buffered=True)
