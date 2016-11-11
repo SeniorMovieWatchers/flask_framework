@@ -99,26 +99,6 @@ $("#duplicate-email").click(function() {
     });
 });
 
-
-    $("#submit-signup").click(function() {
-    var new_data = {
-            username : $("#name").val(),
-            email : $("#email").val(),
-            password : $("#password").val()
-        };
-
-        $.ajax({
-            url: 'http://fa16-cs411-50.cs.illinois.edu/home/new-user',
-            dataType: 'JSON',
-            type: 'POST',
-            contentType: 'application/json; charset=utf-8',
-            success: function(result){
-                $("#query-executed").html(result['query']);
-            },
-            data: JSON.stringify(new_data)
-        });
-});
-
 $("#submit-update").click(function(){
 
     var errorMessage = "";
@@ -178,89 +158,5 @@ $("#submit-update").click(function(){
         $("#password-text").css("display", "none");
         $("#edit-account").css("display", "block");
         $("#logout").css("display", "block");
-
     } 
-
-});
-
-$("#submit-signup").click(function(){
-
-    var errorMessage = "";
-    var fieldMissing = "";
-
-    if($("#email").val() == ""){
-
-        fieldMissing += "Email\n"
-
-    }
-
-    if($("#name").val() == ""){
-
-        fieldMissing += "Name\n"
-
-    }
-
-    if($("#password").val() == ""){
-
-        fieldMissing += "Password\n"
-
-    }
-
-    if($("#passwordConfirm").val() == ""){
-
-        fieldMissing += "Confirm Password\n"
-
-    }
-
-    if(fieldMissing != ""){
-
-        errorMessage += "The following field(s) are missing:" + fieldMissing;
-
-    }
-
-    if(isEmail($("#email").val()) == false){
-
-        errorMessage += "Email is invalid\n";
-
-    }
-
-    if($("#password").val() != $("#passwordConfirm").val()){
-
-        errorMessage += "Passwords don't match";
-
-    }
-
-    if(errorMessage != ""){
-
-        alert(errorMessage);
-
-    }else{
-
-        /*var new_data = {
-            name : $("#name").val(),
-            email : $("#email").val(),
-            password : $("#password").val();
-        };
-
-        $.ajax({
-            url: '/new-user',
-            dataType: 'JSON',
-            type: 'POST',
-            contentType: 'application/json; charset=utf-8',
-            success: function(result){
-                console.log(result)
-            },
-            data: JSON.stringify(new_data);
-        });*/
-
-        $("#signup-jumbotron").css("display", "none");
-        $("#login-button").css("display", "none");
-        $("#signup").css("display", "none");
-        $("#email-text").css("display", "none");
-        $("#password-text").css("display", "none");
-        $("#edit-account").css("display", "block");
-        $("#logout").css("display", "block");
-
-    } 
-
 });

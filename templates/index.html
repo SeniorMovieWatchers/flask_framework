@@ -2,15 +2,16 @@
 <html>
    <head>
    <title>Netflix and Chill</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> 
-    
     <!-- Required meta tags always come first -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-
+    <meta name="google-signin-client_id" content="567865399405-tn5a3lefjbea3phdaui3gh27a9q9r1cl.apps.googleusercontent.com">
+    
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> 
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     
     <style type="text/css">
 
@@ -89,14 +90,14 @@
             </li>
           </ul>
             
-          <form class="form-inline pull-xs-right">
-            <input class="form-control" type="email" id="email-text" placeholder="Email">
-            <input class="form-control" type="password" id="password-text" placeholder="Password">
-            <button class="btn btn-success" type="submit" id="login-button">Login</button>
-            <button class="btn btn-success" type="button" id="signup">Sign Up</button>
-            <button class="btn btn-success" type="button" id="edit-account">Edit Account</button>
-            <button class="btn btn-success" type="button" id="logout">Log Out</button>
-          </form>
+          <div class="form-inline pull-xs-right">
+              <div id="google-signin"></div>
+              <div style="float: left; width: 250px;">
+                  <img id="profile_image" style="width: 40px; height: 40px; float: left; clear: none; margin: 0 20px 0 0; display: none;">
+                  <h2 id="username" style="float: left; clear: none; font-size: 1.5em; margin-top: 5px; display: none;"></h2>
+                  <button id="signout-button" style="float: left; clear: none; display: none; margin: 4px 0 0 20px;">Sign out</button>
+              </div>
+          </div>
         </nav>
         
         <div id="search-jumbotron" class="jumbotron jumbotron-fluid">
@@ -184,5 +185,7 @@
         </div>
     </body>
     
+    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
     <script src="{{ url_for('static', filename='front_page.js') }}"></script>
+    <script src="{{ url_for('static', filename='google_service.js') }}"></script>
 </html>

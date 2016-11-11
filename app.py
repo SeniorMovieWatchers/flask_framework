@@ -6,30 +6,21 @@ app = Flask(__name__)
 @app.route("/")
 @app.route("/index")
 def index():
-  return render_template('index.html')
+    return render_template('index.html')
 
-@app.route("/new-user", methods=["POST"])
-def new_user():
-  if request.method == "POST":
-    username = request.json['username']
-    email    = request.json['email']
-    password = request.json['password']
-    sql_query = "INSERT INTO user(username, email, password) values('%s', '%s', '%s')"%(username, email, password)
-    cursor.execute(sql_query)
-    database.commit()
-    return sql_query
-  return "Unsuccessful POST request"
-
-@app.route("/update-username", methods=["POST"])
-def update_email():
-  if request.method == "POST":
-    username = request.json['username']
-    email   = request.json['email']
-    sql_query = "UPDATE user SET username='%s' WHERE email='%s'"%(username, email)
-    cursor.execute(sql_query)
-    database.commit()
-    return sql_query
-  return "Unsuccessful POST request"
+@app.route("/signin", methods=["POST"])
+def sign_in():
+    if request.method == "POST":
+        id = request.json["id"]
+        username = request.json["username"]
+        email = request.json["email"]
+        sql_query = "SELECT * FROM user WHERE id='%s'" % id
+        cursor.execute(sql_query)
+        if cursor.rowcount == 0:
+            sql_query = "INSERT INTO user(id, username, email) values('%s', '%s', '%s')" % (id, username, email)
+            cursor.execute(sql_query)
+            database.commit()
+    return "Unsuccessful POST request"
 
 @app.route("/search-user-email", methods=["POST"])
 def search_user_email():
@@ -74,9 +65,6 @@ def duplicate_email():
        user_list.append(user)
      result = {"query":sql_query, "user_list":user_list}
      return jsonify(result)
-
+    
 if __name__ == "__main__":
-  import logging, sys
-  logging.basicConfig(stream=sys.stderr)  
-
   app.run(host="0.0.0.0")
