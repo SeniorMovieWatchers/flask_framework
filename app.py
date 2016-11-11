@@ -43,7 +43,8 @@ def search_movie():
                 "language": row[7]
             }
             movie_list.append(movie)
-        result = {"movie_list": user_list}
+        print (movie_list)
+	result = {"movie_list": movie_list}
         return jsonify(result)
     return "Unsuccessful POST request"
 
