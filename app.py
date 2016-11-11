@@ -45,7 +45,7 @@ def search_movie():
                 actors.append(cast[0])
             
             sql_query = "SELECT rating FROM ratings WHERE movie_id = %s" % id
-            cusor.execute(sql_query)
+            cursor.execute(sql_query)
             rating = cursor.fetchone()[0]
             movie = {
                 "id" : row[0],
