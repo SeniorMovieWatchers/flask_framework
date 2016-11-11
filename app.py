@@ -33,6 +33,13 @@ def search_movie():
         rows = cursor.fetchmany(size=5)
         movie_list = []
         for row in rows:
+            id = row[0]
+            sql_query = "SELECT person.name FROM person, person_junction " +\
+                        "WHERE person.id = person_junction.person_id" +\
+                        "AND person_junction.role = 'cast'" +\
+                        "AND person_junction.movie_id = '%s'" % id
+            cursor.execute(sql_query)
+            casts = cursor.fetchmany(size=4)
             movie = {
                 "id" : row[0],
                 "title": row[1],
@@ -40,29 +47,13 @@ def search_movie():
                 "url": row[3],
                 "plot": row[5],
                 "genre": row[6],
-                "language": row[7]
+                "language": row[7],
+                "casts": casts
             }
             movie_list.append(movie)
-        print (movie_list)
-	result = {"movie_list": movie_list}
+        result = {"movie_list": movie_list}
         return jsonify(result)
     return "Unsuccessful POST request"
-
-
-@app.route("/search-user-username", methods=["POST"])
-def search_user_username():
-  if request.method == "POST":
-     username = request.json['username']
-     sql_query = "SELECT * FROM user WHERE username='%s'"%username
-     cursor.execute(sql_query)
-     user_list = []
-     for id, username, email, password in cursor:
-       user = {"username" : username,
-               "email"    : email,
-               "id" : id}
-       user_list.append(user)
-     result = {"query":sql_query, "user_list":user_list}
-     return jsonify(result) 
 
 if __name__ == "__main__":
   app.run(host="0.0.0.0")
