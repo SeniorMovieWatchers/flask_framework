@@ -28,8 +28,8 @@ def sign_in():
 def search_movie():
     if request.method == "POST":
         keyword = request.json["keyword"]
-        sql_query = "SELECT * FROM movie WHERE title LIKE '%%s%'"
-        cursor.execute(sql_query, tuple([keyword]))
+        sql_query = "SELECT * FROM movie WHERE title LIKE %s"
+        cursor.execute(sql_query, tuple(['%' + keyword + '%']))
         rows = cursor.fetchmany(size=5)
         movie_list = []
         for row in rows:
@@ -65,7 +65,7 @@ def add_favorite():
         cursor.execute(sql_query, tuple([user_id, movie_id]))
         database.commit()
 
-def get_movie_details(movie_row):
+def get_movie_details(row):
     id = row[0]
     sql_query = "SELECT person.name FROM person, person_junction " +\
                 "WHERE person.id = person_junction.person_id" +\
