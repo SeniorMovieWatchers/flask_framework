@@ -16,10 +16,10 @@ def sign_in():
         id = request.json["id"]
         username = request.json["username"]
         email = request.json["email"]
-        sql_query = "SELECT * FROM user WHERE email = ?"
+        sql_query = "SELECT * FROM user WHERE email = %s"
         cursor.execute(sql_query, tuple([email]))
         if cursor.rowcount == 0:
-            sql_query = "INSERT INTO user(id, username, email) VALUES(?, ?, ?)"
+            sql_query = "INSERT INTO user(id, username, email) VALUES(%s, %s, %s)"
             cursor.execute(sql_query, tuple([id, username, email]))
             database.commit()
 
@@ -28,7 +28,7 @@ def sign_in():
 def search_movie():
     if request.method == "POST":
         keyword = request.json["keyword"]
-        sql_query = "SELECT * FROM movie WHERE title LIKE '%?%'"
+        sql_query = "SELECT * FROM movie WHERE title LIKE '%%s%'"
         cursor.execute(sql_query, tuple([keyword]))
         rows = cursor.fetchmany(size=5)
         movie_list = []
@@ -42,13 +42,13 @@ def search_movie():
 def get_favorite():
     if request.method == "POST":
         user_id = request.json["user_id"]
-        sql_query = "SELECT movie_id FROM user_favorite WHERE user_id = ?"
+        sql_query = "SELECT movie_id FROM user_favorite WHERE user_id = %s"
         cursor.execute(sql_query, tuple([user_id]))
         rows = cursor.fetchall()
         movie_list = []
         for movie_id in rows:
             movie_id = movie_id[0]
-            sql_query = "SELECT * FROM movie WHERE id = ?"
+            sql_query = "SELECT * FROM movie WHERE id = %s"
             cursor.execute(sql_query, tuple([movie_id]))
             movie_row = cursor.fetchone()
             movie = get_movie_details(movie_row)
@@ -61,7 +61,7 @@ def add_favorite():
     if request.method == "POST":
         user_id = request.json["user_id"]
         movie_id = request.json["movie_id"]
-        sql_query = "INSERT INTO user_favorite(user_id, movie_id) VALUES(?, ?)"
+        sql_query = "INSERT INTO user_favorite(user_id, movie_id) VALUES(%s, %s)"
         cursor.execute(sql_query, tuple([user_id, movie_id]))
         database.commit()
 
@@ -70,13 +70,13 @@ def get_movie_details(movie_row):
     sql_query = "SELECT person.name FROM person, person_junction " +\
                 "WHERE person.id = person_junction.person_id" +\
                 " AND person_junction.role = 'cast'" +\
-                " AND person_junction.movie_id = ?"
+                " AND person_junction.movie_id = %s"
     cursor.execute(sql_query, tuple([id]))
     casts = cursor.fetchmany(size=4)
     actors = []
     for cast in casts:
         actors.append(cast[0])
-    sql_query = "SELECT rating FROM ratings WHERE movie_id = ?"
+    sql_query = "SELECT rating FROM ratings WHERE movie_id = %s"
     cursor.execute(sql_query, tuple([id]))
     rating = cursor.fetchone()[0]
     movie = {
