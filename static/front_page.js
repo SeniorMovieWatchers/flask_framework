@@ -31,6 +31,7 @@ $("#search-movie").click(function() {
                     $("#"+ratingid).text(movie_list[i-1]['rating']);
                     $("#"+plotid).text(movie_list[i-1]['plot']);
                     $("#"+actorsid).text(movie_list[i-1]['casts']);
+                    $("#favorite-btn-"+i).removeClass("disabled");
                 }
                 var j;
                 for(j = movie_list.length; j <= 5; j++){
