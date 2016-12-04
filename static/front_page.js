@@ -103,22 +103,6 @@ $("#search-user").click(function() {
         });
 });
 
-$("#favorite-btn-1").click(function(){ 
-    $("#favorite-btn-1").addClass("disabled");
-});
-$("#favorite-btn-2").click(function(){ 
-    $("#favorite-btn-2").addClass("disabled");
-});
-$("#favorite-btn-3").click(function(){ 
-    $("#favorite-btn-3").addClass("disabled");
-});
-$("#favorite-btn-4").click(function(){ 
-    $("#favorite-btn-4").addClass("disabled");
-});
-$("#favorite-btn-5").click(function(){ 
-    $("#favorite-btn-5").addClass("disabled");
-});
-
 $("#search-user-email").click(function() {
     var new_data = {
             email : $("#user-email").val()
@@ -145,4 +129,30 @@ $("#search-user-email").click(function() {
             },
             data: JSON.stringify(new_data)
         });
+});
+
+$("#favorite-btn-1").click(function(){ 
+    $("#favorite-btn-1").addClass("disabled");
+});
+$("#favorite-btn-2").click(function(){ 
+    $("#favorite-btn-2").addClass("disabled");
+});
+$("#favorite-btn-3").click(function(){ 
+    $("#favorite-btn-3").addClass("disabled");
+});
+$("#favorite-btn-4").click(function(){ 
+    $("#favorite-btn-4").addClass("disabled");
+});
+$("#favorite-btn-5").click(function(){ 
+    $("#favorite-btn-5").addClass("disabled");
+});
+
+$('#time').timepicker({
+    'showDuration': true,
+    'timeFormat': 'g:ia'
+});
+
+$('#date').datepicker({
+    'format': 'yyyy-m-d',
+    'autoclose': true
 });

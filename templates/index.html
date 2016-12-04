@@ -12,6 +12,8 @@
         <script src="https://apis.google.com/js/platform.js" async defer></script>
         
 	<!-- Bootstrap CSS -->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='jquery.timepicker.css')}}"/>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap-datepicker.css')}}"/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
 
         <style type="text/css">
@@ -201,7 +203,7 @@
                     <div class="movie-header">
                         <p id="movie-title-1" class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
                         <button id="favorite-btn-1" class="favorite-btn btn btn-primary" onclick="addFavs(1)">Add to Favorites</button>
-                        <button id="share-btn-1" class="share-btn btn btn-primary">Share Movie with Friends</button>
+                        <button id="share-btn-1" class="share-btn btn btn-primary" data-toggle="modal" data-target="#share-modal">Share Movie with Friends</button>
                     </div>
                     <div class="rating-div">
                         <p class="rating">Metascore: <span id="rating-1">54/100</span> </p>
@@ -277,7 +279,7 @@
                     <div class="movie-header">
                         <p id="movie-title-5" class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
                         <button id="favorite-btn-5" class="favorite-btn btn btn-primary" onclick="addFavs(5)">Add to Favorites</button>
-                        <button id="share-btn-5" class="share-btn btn btn-primary">Share Movie with Friends</button>
+                        <button id="share-btn-5" class="share-btn btn btn-primary"">Share Movie with Friends</button>
                     </div>
                     <div class="rating-div">
                         <p class="rating">Metascore: <span id="rating-5">54/100</span> </p>
@@ -311,10 +313,33 @@
               </div>
           </form>
         </div>
+
+        <!-- Share Modal -->
+        <div class="modal fade" id="share-modal" role="dialog">
+            <div class="modal-dialog" style="transform: translate(-60px, 80px)">
+                <div class="modal-content" style="width: 700px">
+                    <div class="modal-header" style="margin-top: 2px;">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Share Movie With Friends</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container" id="comment-container" style="width: 800px">
+                            <input id="date" type="text" class="date start" />
+                            <input id="time" type="text" class="time start" />
+                        </div>
+                    </div>
+                    <div class="modal-footer" name="newcomment" id="footer-id" style="text-align: left;">
+                        <button class="share-btn btn btn-primary">Create Events</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         
     </body>
     
     <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+    <script src="{{ url_for('static', filename='jquery.timepicker.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='bootstrap-datepicker.js') }}"></script>
     <script src="{{ url_for('static', filename='front_page.js') }}"></script>
     <script src="{{ url_for('static', filename='google_service.js') }}"></script>
     <script src="{{ url_for('static', filename='calendar_service.js') }}"></script>
