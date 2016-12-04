@@ -74,36 +74,6 @@ function addFavs(i){
     }
 }
 
-/*$("#favorite-btn-1").click(function() {
-    
-    $("#favorite-btn-1").click(function(){ 
-        $("#favorite-btn-1").addClass("disabled");
-    });
-    
-    var movieid = $("#movie-1").data("movie-db-id");
-    var auth2 = gapi.auth2.getAuthInstance();
-    if (auth2.isSignedIn.get()) {
-        
-        var profile = auth2.currentUser.get().getBasicProfile();
-        var userid = profile.getId();
-        
-        var new_data = {
-            user_id: userid,
-            movie_id: movieid
-        };
-
-        $.ajax({
-                url: 'http://fa16-cs411-50.cs.illinois.edu/home/add-favorite',
-                dataType: 'JSON',
-                type: 'POST',
-                contentType: 'application/json; charset=utf-8',
-                success: function(result) {
-
-                },
-                data: JSON.stringify(new_data)
-        });
-    }
-});*/
 
 $("#search-user").click(function() {
     var new_data = {
@@ -159,4 +129,30 @@ $("#search-user-email").click(function() {
             },
             data: JSON.stringify(new_data)
         });
+});
+
+$("#favorite-btn-1").click(function(){ 
+    $("#favorite-btn-1").addClass("disabled");
+});
+$("#favorite-btn-2").click(function(){ 
+    $("#favorite-btn-2").addClass("disabled");
+});
+$("#favorite-btn-3").click(function(){ 
+    $("#favorite-btn-3").addClass("disabled");
+});
+$("#favorite-btn-4").click(function(){ 
+    $("#favorite-btn-4").addClass("disabled");
+});
+$("#favorite-btn-5").click(function(){ 
+    $("#favorite-btn-5").addClass("disabled");
+});
+
+$('#time').timepicker({
+    'showDuration': true,
+    'timeFormat': 'g:ia'
+});
+
+$('#date').datepicker({
+    'format': 'yyyy-m-d',
+    'autoclose': true
 });

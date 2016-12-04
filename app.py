@@ -4,8 +4,8 @@ import ratings_matrix
 from similarity import get_matches
 
 NUM_RECOMMENDATIONS = 5
-RATINGS_PATH = '/srv/movielens/ratings_matrix.npz'
-RATINGS_MATRIX = ratings_matrix.ratings_matrix(ratings_path)
+#RATINGS_PATH = '/srv/movielens/ratings_matrix.npz'
+#RATINGS_MATRIX = ratings_matrix.ratings_matrix(RATINGS_PATH)
 
 app = Flask(__name__)
 
@@ -74,9 +74,9 @@ def add_favorite():
         database.commit()
 	return "SUCCESS"
 
-
+'''
 @app.route("/get-recommendation", methods=["POST"])
-def get-recommendation():
+def get_recommendation():
     if request.method == "POST":
         user_id = request.json["user_id"]
         sql_query = "SELECT movie_id FROM user_favorite WHERE user_id = %s"
@@ -102,7 +102,7 @@ def get-recommendation():
             movie_list.append(movie)
         result = {"recommended_movies": movie_list}
         return jsonify(result) 
-
+'''
 
 def get_movie_details(row):
     id = row[0]
