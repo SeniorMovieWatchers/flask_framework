@@ -1,4 +1,4 @@
-import MySQLdb
+from db import database, cursor
 import numpy as np
 from scipy.sparse import csr_matrix
 from scipy.sparse import dok_matrix
@@ -8,8 +8,8 @@ class ratings_matrix:
         if path:
             self.load_from_path(path)
         else:
-            self.db = MySQLdb.connect(host='127.0.0.1', user='root', passwd='cs411fa2016', db='movielens')
-            self.cur = self.db.cursor()
+            self.db = database
+            self.cur = cursor
             self.load_from_db()
 
     def load_from_db(self):
