@@ -10,6 +10,7 @@
         <meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="google-signin-client_id" content="567865399405-tn5a3lefjbea3phdaui3gh27a9q9r1cl.apps.googleusercontent.com">
         <script src="https://apis.google.com/js/platform.js" async defer></script>
+        
 	<!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
 
@@ -98,7 +99,7 @@
             }
             
             .movie-description {
-                width: 800px;
+                width: 900px;
                 float: left;
                 margin-left: 15px;
             }
@@ -199,7 +200,7 @@
                 <div class="movie-description">
                     <div class="movie-header">
                         <p id="movie-title-1" class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
-                        <button id="favorite-btn-1" class="favorite-btn btn btn-primary">Add to Favorites</button>
+                        <button id="favorite-btn-1" class="favorite-btn btn btn-primary" onclick="addFavs(1)">Add to Favorites</button>
                         <button id="share-btn-1" class="share-btn btn btn-primary">Share Movie with Friends</button>
                     </div>
                     <div class="rating-div">
@@ -218,7 +219,7 @@
                 <div class="movie-description">
                     <div class="movie-header">
                         <p id="movie-title-2" class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
-                        <button id="favorite-btn-2" class="favorite-btn btn btn-primary">Add to Favorites</button>
+                        <button id="favorite-btn-2" class="favorite-btn btn btn-primary" onclick="addFavs(2)">Add to Favorites</button>
                         <button id="share-btn-2" class="share-btn btn btn-primary">Share Movie with Friends</button>
                     </div>
                     <div class="rating-div">
@@ -237,7 +238,7 @@
                 <div class="movie-description">
                     <div class="movie-header">
                         <p id="movie-title-3" class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
-                        <button id="favorite-btn-3" class="favorite-btn btn btn-primary">Add to Favorites</button>
+                        <button id="favorite-btn-3" class="favorite-btn btn btn-primary" onclick="addFavs(3)">Add to Favorites</button>
                         <button id="share-btn-3" class="share-btn btn btn-primary">Share Movie with Friends</button>
                     </div>
                     <div class="rating-div">
@@ -256,7 +257,7 @@
                 <div class="movie-description">
                     <div class="movie-header">
                         <p id="movie-title-4" class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
-                        <button id="favorite-btn-4" class="favorite-btn btn btn-primary">Add to Favorites</button>
+                        <button id="favorite-btn-4" class="favorite-btn btn btn-primary" onclick="addFavs(4)">Add to Favorites</button>
                         <button id="share-btn-4" class="share-btn btn btn-primary">Share Movie with Friends</button>
                     </div>
                     <div class="rating-div">
@@ -275,7 +276,7 @@
                 <div class="movie-description">
                     <div class="movie-header">
                         <p id="movie-title-5" class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
-                        <button id="favorite-btn-5" class="favorite-btn btn btn-primary">Add to Favorites</button>
+                        <button id="favorite-btn-5" class="favorite-btn btn btn-primary" onclick="addFavs(5)">Add to Favorites</button>
                         <button id="share-btn-5" class="share-btn btn btn-primary">Share Movie with Friends</button>
                     </div>
                     <div class="rating-div">
@@ -304,6 +305,26 @@
               </div>
           </form>
         </div>
+        
+        <script type="text/javascript">
+        
+            $("#favorite-btn-1").click(function(){ 
+                $("#favorite-btn-1").addClass("disabled");
+            });
+            $("#favorite-btn-2").click(function(){ 
+                $("#favorite-btn-2").addClass("disabled");
+            });
+            $("#favorite-btn-3").click(function(){ 
+                $("#favorite-btn-3").addClass("disabled");
+            });
+            $("#favorite-btn-4").click(function(){ 
+                $("#favorite-btn-4").addClass("disabled");
+            });
+            $("#favorite-btn-5").click(function(){ 
+                $("#favorite-btn-5").addClass("disabled");
+            });
+        
+        </script>
         
 
         <!--
@@ -339,6 +360,8 @@
     </body>
     
     <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+    <!--
     <script src="{{ url_for('static', filename='front_page.js') }}"></script>
-    <script src="{{ url_for('static', filename='google_service.js') }}"></script>
+    <script src="{{ url_for('static', filename='google_service.js') }}"></script> -->
+    
 </html>
