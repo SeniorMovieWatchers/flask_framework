@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 from db import database, cursor
+from recommendations import ratings_matrix
 import time
 
 app = Flask(__name__)
