@@ -24,7 +24,6 @@
             }
             
             #recomendations-jumbotron {
-                display: none;
                 background-size: cover;
                 background-color: #303030;
                 color: white;
@@ -94,19 +93,46 @@
                 margin-top: 5px;
             }
             
+            .recommended-movie-image{
+                margin-right: 10px;
+            }
+            
             .movie-description {
                 width: 800px;
                 float: left;
                 margin-left: 15px;
             }
             
+            .movie-plot {
+                
+            }
+            
             .movie-title {
+                float: left;
                 font-size: 24px;
                 margin-bottom: 10px;
             }
             
+             .movie-header {
+                height: 40px;
+            }
+            
+            .favorite-btn {
+                margin-left: 5px;
+                float: left; 
+            }
+            
+            .share-btn {
+                float: left;
+                margin-left: 5px;
+            }
+            
             .rating {
                 margin-bottom: 6px;
+            }
+            
+            .rating-div {
+                width: 50%;
             }
             
             .movie-director {
@@ -115,6 +141,7 @@
             
             .movie-actors {
                 margin-bottom: 6px;
+                float: left;
             }
             
             #header2 {
@@ -162,14 +189,22 @@
         </div>
 	</div>
         
+        
         <div id="search-movie-results">
-            <div class="movie-info" style="display: none;" id="movie-1">
+            
+            <div class="movie-info" id="movie-1">
                 <div class="movie-image">
                     <img id="img-1" src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY1NDI1Nzg4OF5BMl5BanBnXkFtZTgwNjYxOTg4ODE@._V1_UX140_CR0,0,140,209_AL_.jpg">
                 </div>
                 <div class="movie-description">
-                    <p id="movie-title-1" class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
-                    <p class="rating">Metascore: <span id="rating-1">54/100</span> </p>
+                    <div class="movie-header">
+                        <p id="movie-title-1" class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
+                        <button id="favorite-btn-1" class="favorite-btn btn btn-primary">Add to Favorites</button>
+                        <button id="share-btn-1" class="share-btn btn btn-primary">Share Movie with Friends</button>
+                    </div>
+                    <div class="rating-div">
+                        <p class="rating">Metascore: <span id="rating-1">54/100</span> </p>
+                    </div>
                     <p id="movie-plot-1" class="movie-plot">
                         19-year-old Billy Lynn is brought home for a victory tour after a harrowing Iraq battle. Through flashbacks the film shows what really happened to his squad - contrasting the realities of war with America's perceptions.
                     </p>
@@ -181,8 +216,14 @@
                     <img id="img-2" src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY1NDI1Nzg4OF5BMl5BanBnXkFtZTgwNjYxOTg4ODE@._V1_UX140_CR0,0,140,209_AL_.jpg">
                 </div>
                 <div class="movie-description">
-                    <p id="movie-title-2" class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
-                    <p class="rating">Metascore: <span id="rating-2">54/100</span> </p>
+                    <div class="movie-header">
+                        <p id="movie-title-2" class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
+                        <button id="favorite-btn-2" class="favorite-btn btn btn-primary">Add to Favorites</button>
+                        <button id="share-btn-2" class="share-btn btn btn-primary">Share Movie with Friends</button>
+                    </div>
+                    <div class="rating-div">
+                        <p class="rating">Metascore: <span id="rating-2">54/100</span> </p>
+                    </div>
                     <p id="movie-plot-2" class="movie-plot">
                         19-year-old Billy Lynn is brought home for a victory tour after a harrowing Iraq battle. Through flashbacks the film shows what really happened to his squad - contrasting the realities of war with America's perceptions.
                     </p>
@@ -194,8 +235,14 @@
                     <img id="img-3" src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY1NDI1Nzg4OF5BMl5BanBnXkFtZTgwNjYxOTg4ODE@._V1_UX140_CR0,0,140,209_AL_.jpg">
                 </div>
                 <div class="movie-description">
-                    <p id="movie-title-3" class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
-                    <p class="rating">Metascore: <span id="rating-3">54/100</span> </p>
+                    <div class="movie-header">
+                        <p id="movie-title-3" class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
+                        <button id="favorite-btn-3" class="favorite-btn btn btn-primary">Add to Favorites</button>
+                        <button id="share-btn-3" class="share-btn btn btn-primary">Share Movie with Friends</button>
+                    </div>
+                    <div class="rating-div">
+                        <p class="rating">Metascore: <span id="rating-3">54/100</span> </p>
+                    </div>
                     <p id="movie-plot-3" class="movie-plot">
                         19-year-old Billy Lynn is brought home for a victory tour after a harrowing Iraq battle. Through flashbacks the film shows what really happened to his squad - contrasting the realities of war with America's perceptions.
                     </p>
@@ -203,12 +250,18 @@
                 </div>
             </div>
             <div class="movie-info" style="display: none;" id="movie-4">
-               <div class="movie-image">
+                <div class="movie-image">
                     <img id="img-4" src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY1NDI1Nzg4OF5BMl5BanBnXkFtZTgwNjYxOTg4ODE@._V1_UX140_CR0,0,140,209_AL_.jpg">
                 </div>
                 <div class="movie-description">
-                    <p id="movie-title-4" class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
-                    <p class="rating">Metascore: <span id="rating-4">54/100</span> </p>
+                    <div class="movie-header">
+                        <p id="movie-title-4" class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
+                        <button id="favorite-btn-4" class="favorite-btn btn btn-primary">Add to Favorites</button>
+                        <button id="share-btn-4" class="share-btn btn btn-primary">Share Movie with Friends</button>
+                    </div>
+                    <div class="rating-div">
+                        <p class="rating">Metascore: <span id="rating-3">54/100</span> </p>
+                    </div>
                     <p id="movie-plot-4" class="movie-plot">
                         19-year-old Billy Lynn is brought home for a victory tour after a harrowing Iraq battle. Through flashbacks the film shows what really happened to his squad - contrasting the realities of war with America's perceptions.
                     </p>
@@ -220,8 +273,14 @@
                     <img id="img-5" src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY1NDI1Nzg4OF5BMl5BanBnXkFtZTgwNjYxOTg4ODE@._V1_UX140_CR0,0,140,209_AL_.jpg">
                 </div>
                 <div class="movie-description">
-                    <p id="movie-title-5" class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
-                    <p class="rating">Metascore: <span id="rating-5">54/100</span> </p>
+                    <div class="movie-header">
+                        <p id="movie-title-5" class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
+                        <button id="favorite-btn-5" class="favorite-btn btn btn-primary">Add to Favorites</button>
+                        <button id="share-btn-5" class="share-btn btn btn-primary">Share Movie with Friends</button>
+                    </div>
+                    <div class="rating-div">
+                        <p class="rating">Metascore: <span id="rating-5">54/100</span> </p>
+                    </div>
                     <p id="movie-plot-5" class="movie-plot">
                         19-year-old Billy Lynn is brought home for a victory tour after a harrowing Iraq battle. Through flashbacks the film shows what really happened to his squad - contrasting the realities of war with America's perceptions.
                     </p>
@@ -236,6 +295,13 @@
             
           <form id="search-form" class="form-inline">
               <p>"The system will recommend movies here but this function is not yet implemented !"</p>
+              <div>
+                    <img class="recommended-movie-image" id="rec-img-1" src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY1NDI1Nzg4OF5BMl5BanBnXkFtZTgwNjYxOTg4ODE@._V1_UX140_CR0,0,140,209_AL_.jpg">
+                    <img class="recommended-movie-image" id="rec-img-1" src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY1NDI1Nzg4OF5BMl5BanBnXkFtZTgwNjYxOTg4ODE@._V1_UX140_CR0,0,140,209_AL_.jpg">
+                    <img class="recommended-movie-image" id="rec-img-1" src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY1NDI1Nzg4OF5BMl5BanBnXkFtZTgwNjYxOTg4ODE@._V1_UX140_CR0,0,140,209_AL_.jpg">
+                    <img class="recommended-movie-image" id="rec-img-1" src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY1NDI1Nzg4OF5BMl5BanBnXkFtZTgwNjYxOTg4ODE@._V1_UX140_CR0,0,140,209_AL_.jpg">
+                    <img class="recommended-movie-image" id="rec-img-1" src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY1NDI1Nzg4OF5BMl5BanBnXkFtZTgwNjYxOTg4ODE@._V1_UX140_CR0,0,140,209_AL_.jpg">
+              </div>
           </form>
         </div>
         

@@ -20,15 +20,48 @@ $("#search-movie").click(function() {
                     var plotid = "movie-plot-" + i;
                     var actorsid = "actors-" + i;
                     $("#"+movieid).css("display", "block");
+                    $("#"+movieid).data("movie-db-id", movie_list[i-1]['id']);
                     $("#"+imageid).attr("src", movie_list[i-1]['url']);
                     $("#"+titleid).text(movie_list[i-1]['title']);
                     $("#"+ratingid).text(movie_list[i-1]['rating']);
                     $("#"+plotid).text(movie_list[i-1]['plot']);
                     $("#"+actorsid).text(movie_list[i-1]['casts']);
                 }
+                var j;
+                for(j = movie_list.length; j <= 5; j++){
+                    var movieid = "movie-" + i;
+                    $("#"+movieid).css("display", "none");
+                }
             },
             data: JSON.stringify(new_data)
         });
+});
+
+$("#favorite-btn-1").click(function() {
+    
+    var movieid = $("#movie-1").data("movie-db-id");
+    var auth2 = gapi.auth2.getAuthInstance();
+    if (auth2.isSignedIn.get()) {
+        
+        var profile = auth2.currentUser.get().getBasicProfile();
+        var userid = profile.getId();
+        
+        var new_data = {
+            user_id: userid,
+            movie_id: movieid
+        };
+
+        $.ajax({
+                url: 'http://fa16-cs411-50.cs.illinois.edu/home/add-favorite',
+                dataType: 'JSON',
+                type: 'POST',
+                contentType: 'application/json; charset=utf-8',
+                success: function(result) {
+
+                },
+                data: JSON.stringify(new_data)
+        });
+    }
 });
 
 $("#search-user").click(function() {
