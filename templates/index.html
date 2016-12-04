@@ -18,6 +18,42 @@
 
         <style type="text/css">
 
+            /**
+             * Profile image component
+             */
+            .profile-header-container{
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            .profile-header-img {
+            }
+
+            .profile-header-img > img.img-circle {
+                width: 40px;
+                height: 40px;
+                border: 2px solid #51D2B7;
+            }
+
+            .profile-header {
+                margin-top: 10px;
+            }
+
+            /**
+             * Ranking component
+             */
+            .rank-label-container {
+                margin-top: -19px;
+                /* z-index: 1000; */
+                text-align: center;
+            }
+
+            .label.label-default.rank-label {
+                background-color: rgb(81, 210, 183);
+                padding: 2px 5px 2px 5px;
+                border-radius: 10px;
+            }
+
             #search-jumbotron {
                 background-size: cover;
                 background-color: #303030;
@@ -171,15 +207,28 @@
               <a class="nav-link" href="#middle-jumbotron">About</a>
             </li>
           </ul>
-            
+        
           <div class="form-inline pull-xs-right">
               <div id="google-signin"></div>
-              <div style="float: left; width: 250px;">
+              <!-- <div style="float: left; width: 250px;">
                   <img id="profile_image" style="width: 40px; height: 40px; float: left; clear: none; margin: 0 20px 0 0; display: none;">
                   <h2 id="username" style="float: left; clear: none; font-size: 1.5em; margin-top: 5px; display: none;"></h2>
                   <button id="signout-button" style="float: left; clear: none; display: none; margin: 4px 0 0 20px;">Sign out</button>
-              </div>
+              </div> -->
           </div>
+          <div class="profile-header-container form-inline pull-xs-right dropdown" style="margin-right: 50px;">   
+            <div id="profile-header" class="profile-header-img dropdown-toggle" style="display: none;" data-toggle="dropdown">
+                <img id="profile_image" class="img-circle"/>
+                <!-- badge -->
+                <div class="rank-label-container">
+                    <span id="username" class="label label-default rank-label"></span>
+                </div>
+            </div>
+            <ul class="dropdown-menu" style="margin-top: -20px; min-width: 100px;">
+              <button class="dropdown-item" type="button">Profile</button>
+              <button id="signout-button" class="dropdown-item" type="button">Sign Out</button>
+            </ul>
+        </div> 
         </nav>
         
         <div id="search-jumbotron" class="jumbotron jumbotron-fluid">

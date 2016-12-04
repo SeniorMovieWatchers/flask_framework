@@ -3,9 +3,7 @@ function onSuccess(googleUser) {
     $('#google-signin').hide();
     $('#username').text(googleUser.getBasicProfile().getGivenName());
     $('#profile_image').attr('src', googleUser.getBasicProfile().getImageUrl());
-    $('#profile_image').show();
-    $('#username').show();
-    $('#signout-button').show();
+    $('#profile-header').show();
     signIn(googleUser);
 }
 
@@ -44,9 +42,7 @@ function renderButton() {
 $('#signout-button').click(function() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
-        $('#profile_image').hide();
-        $('#username').hide();
-        $('#signout-button').hide();
+        $('#profile-header').hide();
         $('#google-signin').show();
     });
 })
