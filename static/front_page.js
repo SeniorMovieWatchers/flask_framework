@@ -43,8 +43,7 @@ $("#search-movie").click(function() {
 });
 
 function addFavs(i){
- document.getElementById("rbutton_"+i).setAttribute("disabled","disabled");
-    
+ 
     $("#favorite-btn-"+i).click(function(){ 
         $("#favorite-btn-"+i).addClass("disabled");
     });
