@@ -98,3 +98,31 @@ function appendPre(message) {
   var textContent = document.createTextNode(message + '\n');
   pre.appendChild(textContent);
 }
+
+function createEvent() {
+  var event = {
+    'summary' : ,
+    'description' : ,
+    'start' : {
+      'dateTime' : ,
+      'timeZone' : 'America/Chicago'
+    },
+    'end' : {
+      'dateTime' : ,
+      'timeZone' : 'America/Chicago'
+    },
+    'attendees' : [
+      {'email' : }
+    ]
+  };
+
+  var request = gapi.client.calendar.events.insert({
+    'calendarId': 'primary',
+    'resource': event
+  });
+
+  request.execute(function(event) {
+    $.notify({
+      message: 'Hello World' 
+    });
+}
