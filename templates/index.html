@@ -63,6 +63,7 @@
             }
             
             #recomendations-jumbotron {
+                display: none;
                 background-size: cover;
                 background-color: #303030;
                 color: white;
@@ -329,7 +330,7 @@
                     <div class="movie-header">
                         <p id="movie-title-5" class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
                         <button id="favorite-btn-5" class="favorite-btn btn btn-primary" onclick="addFavs(5)">Add to Favorites</button>
-                        <button id="share-btn-5" class="share-btn btn btn-primary"">Share Movie with Friends</button>
+                        <button id="share-btn-5" class="share-btn btn btn-primary">Share Movie with Friends</button>
                     </div>
                     <div class="rating-div">
                         <p class="rating">Metascore: <span id="rating-5">54/100</span> </p>
@@ -354,13 +355,12 @@
           <h1 id="header2" class="display-5">Recomendations</h1>
           <hr class="m-y-2">
           <form id="search-form" class="form-inline">
-              <p>"The system will recommend movies here but this function is not yet implemented !"</p>
               <div>
                     <img class="recommended-movie-image" id="rec-img-1" src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY1NDI1Nzg4OF5BMl5BanBnXkFtZTgwNjYxOTg4ODE@._V1_UX140_CR0,0,140,209_AL_.jpg">
-                    <img class="recommended-movie-image" id="rec-img-1" src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY1NDI1Nzg4OF5BMl5BanBnXkFtZTgwNjYxOTg4ODE@._V1_UX140_CR0,0,140,209_AL_.jpg">
-                    <img class="recommended-movie-image" id="rec-img-1" src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY1NDI1Nzg4OF5BMl5BanBnXkFtZTgwNjYxOTg4ODE@._V1_UX140_CR0,0,140,209_AL_.jpg">
-                    <img class="recommended-movie-image" id="rec-img-1" src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY1NDI1Nzg4OF5BMl5BanBnXkFtZTgwNjYxOTg4ODE@._V1_UX140_CR0,0,140,209_AL_.jpg">
-                    <img class="recommended-movie-image" id="rec-img-1" src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY1NDI1Nzg4OF5BMl5BanBnXkFtZTgwNjYxOTg4ODE@._V1_UX140_CR0,0,140,209_AL_.jpg">
+                    <img class="recommended-movie-image" id="rec-img-2" src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY1NDI1Nzg4OF5BMl5BanBnXkFtZTgwNjYxOTg4ODE@._V1_UX140_CR0,0,140,209_AL_.jpg">
+                    <img class="recommended-movie-image" id="rec-img-3" src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY1NDI1Nzg4OF5BMl5BanBnXkFtZTgwNjYxOTg4ODE@._V1_UX140_CR0,0,140,209_AL_.jpg">
+                    <img class="recommended-movie-image" id="rec-img-4" src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY1NDI1Nzg4OF5BMl5BanBnXkFtZTgwNjYxOTg4ODE@._V1_UX140_CR0,0,140,209_AL_.jpg">
+                    <img class="recommended-movie-image" id="rec-img-5" src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY1NDI1Nzg4OF5BMl5BanBnXkFtZTgwNjYxOTg4ODE@._V1_UX140_CR0,0,140,209_AL_.jpg">
               </div>
           </form>
         </div>
@@ -383,8 +383,13 @@
                     </div>
                     <div class="modal-body">
                         <div class="container" id="comment-container" style="width: 800px">
+                            <label for="email">Pick date and time:</label>
                             <input id="date" type="text" class="date start" />
                             <input id="time" type="text" class="time start" />
+                        </div>
+                        <div class="container" id="email-container" style="width: 800px">
+                            <label for="email">Enter friends email:</label>
+                            <input id="email" type="email" placeholder="yourname@gmail.com" class="form control" />
                         </div>
                     </div>
                     <div class="modal-footer" name="newcomment" id="footer-id" style="text-align: left;">

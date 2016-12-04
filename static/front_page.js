@@ -1,3 +1,44 @@
+updateRecs();
+
+function updateRecs(){
+    var auth2 = gapi.auth2.getAuthInstance();
+    if (auth2.isSignedIn.get()) {
+    
+    var profile = auth2.currentUser.get().getBasicProfile();
+    var userid = profile.getId();
+
+    var new_data = {
+        user_id: userid
+    };
+    
+    $.ajax({
+        url: 'http://fa16-cs411-50.cs.illinois.edu/home/search-movie',
+        dataType: 'JSON',
+        type: 'POST',
+        contentType: 'application/json; charset=utf-8',
+        success: function(result) {
+
+            movie_list = result['recomended_movies'];
+            var i;
+            for(i = 1; i <= movie_list.length; i++){
+                var movieid = "rec-img-" + i;
+                $("#"+movieid).css("display", "block");
+            }
+            var j;
+            for(j = movie_list.length; j <= 5; j++){
+                var movieid = "rec-img-" + i;
+                $("#"+movieid).css("display", "none");
+            }
+
+            $("#recomendations-jumbotron").css("display", "block");
+
+        },
+        data: JSON.stringify(new_data)
+    });
+}
+
+}
+
 $("#search-movie").click(function() {
     var new_data = {
         keyword: $("#search-text").val()
@@ -9,11 +50,6 @@ $("#search-movie").click(function() {
             type: 'POST',
             contentType: 'application/json; charset=utf-8',
             success: function(result) {
-                
-                var auth2 = gapi.auth2.getAuthInstance();
-                if (auth2.isSignedIn.get()) {
-                    $("#recomendations-jumbotron").css("display", "block");    
-                }
                 
                 movie_list = result['movie_list'];
                 var i;
@@ -73,6 +109,7 @@ function addFavs(i){
                       delay: 1000
                     });
                     $("#favorite-btn-"+i).addClass("disabled");
+                    updateRecs();
                 },
                 data: JSON.stringify(new_data)
         });
