@@ -2,10 +2,6 @@ $("#search-movie").click(function() {
     var new_data = {
         keyword: $("#search-text").val()
     };
-
-    $.notify({
-      message: 'Hello World' 
-    });
     
     $.ajax({
             url: 'http://fa16-cs411-50.cs.illinois.edu/home/search-movie',
@@ -48,11 +44,11 @@ $("#search-movie").click(function() {
 });
 
 function addFavs(i){
- 
+ /*
     $("#favorite-btn-"+i).click(function(){ 
         $("#favorite-btn-"+i).addClass("disabled");
     });
-    
+   */ 
     var movieid = $("#movie-"+i).data("movie-db-id");
     var auth2 = gapi.auth2.getAuthInstance();
     if (auth2.isSignedIn.get()) {
@@ -70,10 +66,21 @@ function addFavs(i){
                 dataType: 'JSON',
                 type: 'POST',
                 contentType: 'application/json; charset=utf-8',
-                success: function(result) {
-
+                success: function(result) { 
+                    $.notify({
+                      message: 'Successfully added to your favorite movie list' 
+                    }, {
+                      delay: 1000
+                    });
+                    $("#favorite-btn-"+i).addClass("disabled");
                 },
                 data: JSON.stringify(new_data)
+        });
+    } else {
+        $.notify({
+          message: 'Please log in first' 
+        }, {
+          delay: 1000
         });
     }
 }
@@ -134,7 +141,7 @@ $("#search-user-email").click(function() {
             data: JSON.stringify(new_data)
         });
 });
-
+/*
 $("#favorite-btn-1").click(function(){ 
     $("#favorite-btn-1").addClass("disabled");
 });
@@ -150,7 +157,7 @@ $("#favorite-btn-4").click(function(){
 $("#favorite-btn-5").click(function(){ 
     $("#favorite-btn-5").addClass("disabled");
 });
-
+*/
 $('#time').timepicker({
     'showDuration': true,
     'timeFormat': 'g:ia'
