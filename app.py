@@ -22,6 +22,7 @@ def sign_in():
             sql_query = "INSERT INTO user(id, username, email) VALUES(%s, %s, %s)"
             cursor.execute(sql_query, tuple([id, username, email]))
             database.commit()
+	return "SUCCESS"
 
 
 @app.route("/search-movie", methods=["POST"])
@@ -64,6 +65,7 @@ def add_favorite():
         sql_query = "INSERT INTO user_favorite(user_id, movie_id) VALUES(%s, %s)"
         cursor.execute(sql_query, tuple([user_id, movie_id]))
         database.commit()
+	return "SUCCESS"
 
 def get_movie_details(row):
     id = row[0]
