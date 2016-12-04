@@ -3,12 +3,12 @@
    <head>
        <title>Netflix and Chill</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> 
-
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <!-- Required meta tags always come first -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-	<meta name="google-signin-client_id" content="567865399405-tn5a3lefjbea3phdaui3gh27a9q9r1cl.apps.googleusercontent.com">
+	    <meta name="google-signin-client_id" content="567865399405-tn5a3lefjbea3phdaui3gh27a9q9r1cl.apps.googleusercontent.com">
         <script src="https://apis.google.com/js/platform.js" async defer></script>
         
 	<!-- Bootstrap CSS -->
@@ -289,6 +289,12 @@
                 </div>
             </div>
         </div>
+
+        <div id="authorize-div" style="display: none">
+            <span>Authorize access to Google Calendar API</span>
+            <button id="authorize-button" onclick="handleAuthClick(event)">Authorize</button>
+        </div>
+        <pre id="output"></pre>
         
         <div id="recomendations-jumbotron" class="jumbotron jumbotron-fluid">
           <h1 id="header2" class="display-5">Recomendations</h1>
@@ -306,62 +312,12 @@
           </form>
         </div>
         
-        <script type="text/javascript">
-        
-            $("#favorite-btn-1").click(function(){ 
-                $("#favorite-btn-1").addClass("disabled");
-            });
-            $("#favorite-btn-2").click(function(){ 
-                $("#favorite-btn-2").addClass("disabled");
-            });
-            $("#favorite-btn-3").click(function(){ 
-                $("#favorite-btn-3").addClass("disabled");
-            });
-            $("#favorite-btn-4").click(function(){ 
-                $("#favorite-btn-4").addClass("disabled");
-            });
-            $("#favorite-btn-5").click(function(){ 
-                $("#favorite-btn-5").addClass("disabled");
-            });
-        
-        </script>
-        
-
-        <!--
-        <div id="search-users">
-            <div id="data-search">
-                <h2>Search for users on the website</h2>
-                <input type="text" id="user" placeholder="Name">
-                <button type="button" id="search-user">Search Name</button>
-                <input type="text" id="user-email" placeholder="Email">
-                <button type="button" id="search-user-email">Search Email</button>
-                <button type="button" id="duplicate-email">View Duplicate Emails</button>
-            </div>
-            
-            <div id="results">
-                <h5>Results:</h5>
-                <table class="table table-inverse" id="results-table">
-                    <thead>
-                        <tr>
-                            <th>User ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                        </tr>
-                    </thead>
-                    <tbody id="table-content">
-                    </tbody>
-                </table>
-            </div>
-            <h5>Executed Query:</h5>
-            <p id="query-executed"></p>
-        </div> 
-        -->
-
     </body>
     
     <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
-    
     <script src="{{ url_for('static', filename='front_page.js') }}"></script>
     <script src="{{ url_for('static', filename='google_service.js') }}"></script>
+    <script src="{{ url_for('static', filename='calendar_service.js') }}"></script>
+    <script src="https://apis.google.com/js/client.js?onload=checkAuth"></script>
     
 </html>

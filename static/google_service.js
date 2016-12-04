@@ -49,5 +49,4 @@ $('#signout-button').click(function() {
         $('#signout-button').hide();
         $('#google-signin').show();
     });
-    
 })
