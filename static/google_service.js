@@ -5,6 +5,7 @@ function onSuccess(googleUser) {
     $('#profile_image').attr('src', googleUser.getBasicProfile().getImageUrl());
     $('#profile-header').show();
     signIn(googleUser);
+    updateRecs();
 }
 
 function signIn(googleUser) {
