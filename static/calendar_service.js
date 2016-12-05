@@ -22,7 +22,6 @@ function checkAuth() {
 function handleAuthResult(authResult) {
   if (authResult && !authResult.error) {
     // Hide auth UI, then load client library.
-    loadCalendarApi();
   } else {
     // Show auth UI, allowing the user to initiate authorization by
     // clicking authorize button.
@@ -39,14 +38,6 @@ function handleAuthClick(event) {
     {client_id: CLIENT_ID, scope: SCOPES, immediate: false},
     handleAuthResult);
   return false;
-}
-
-/**
- * Load Google Calendar client library. List upcoming events
- * once client library is loaded.
- */
-function loadCalendarApi() {
-  gapi.client.load('calendar', 'v3', listUpcomingEvents);
 }
 
 function createEvent(i) {
