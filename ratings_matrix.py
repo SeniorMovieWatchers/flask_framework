@@ -20,7 +20,7 @@ class ratings_matrix:
 
         index = 0
         self.imdb_ids = np.empty(movie_count)
-        imdb_to_index = {}
+        self.imdb_to_index = {}
         self.total_ratings = np.empty(user_count)
         self.ratings = dok_matrix((user_count, movie_count), dtype=np.float64)
 
@@ -30,11 +30,11 @@ class ratings_matrix:
             movie_id = int(movie_id)
             rating = float(rating)
 
-            if movie_id in imdb_to_index:
-                movie_index = imdb_to_index[movie_id]
+            if movie_id in self.imdb_to_index:
+                movie_index = self.imdb_to_index[movie_id]
             else:
                 movie_index = index
-                imdb_to_index[movie_id] = movie_index
+                self.imdb_to_index[movie_id] = movie_index
                 self.imdb_ids[index] = movie_id
                 index += 1
             self.ratings[user_id, movie_index] = rating
@@ -44,6 +44,11 @@ class ratings_matrix:
 
     def imdb_id(self, column):
         return self.imdb_ids[column]
+
+    def index_from_imdb(self, imdb):
+        if imdb not in self.imdb_to_index:
+            return -1
+        return self.imdb_to_index[imdb]
 
     def count_unique(self, table, column):
         self.cur.execute('select count(distinct({})) from {};'.format(column, table))
@@ -60,6 +65,10 @@ class ratings_matrix:
         self.imdb_ids = loader['imdb_ids']
         self.total_ratings = loader['total_ratings']
         self.ratings = csr_matrix((loader['data'], loader['indices'], loader['indptr']), shape = loader['shape'])
+        self.imdb_to_index = {}
+        for index, imdb_id in enumerate(self.imdb_ids):
+            self.imdb_to_index[int(imdb_id)] = index
+        print(self.imdb_to_index[self.imdb_ids[10584]])
 
     def total_rating(self, user_id):
         return self.total_ratings[user_id]
@@ -74,3 +83,10 @@ class ratings_matrix:
 
     def user_count(self):
         return self.ratings.shape[0]
+    def movie_count(self):
+        return self.ratings.shape[1]
+if __name__ == '__main__':
+    ratings_path = '/srv/movielens/ratings_matrix.npz'
+    matrix = ratings_matrix()
+    matrix.save_to_path(ratings_path)
+    matrix.db.close()
