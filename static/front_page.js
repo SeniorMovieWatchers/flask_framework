@@ -106,6 +106,11 @@ function addFavs(i){
                 },
                 data: JSON.stringify(new_data)
         });
+	$.notify({
+		message: 'Successfully added to your favorite movie list'
+	},{
+		delay: 1000
+	});
         updateRecs();
     } else {
         $.notify({

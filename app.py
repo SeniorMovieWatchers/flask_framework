@@ -82,7 +82,7 @@ def get_recommendation():
         user_id = request.json["user_id"]
         sql_query = "SELECT DISTINCT movie_id FROM user_favorite WHERE user_id = %s"
         cursor.execute(sql_query, tuple([user_id]))
-        movie_ids = cursor.fethchall()
+        movie_ids = cursor.fetchall()
         movie_list = []
         if len(movie_ids) == 0:
             result = {"recommended_movies": movie_list}
@@ -90,18 +90,21 @@ def get_recommendation():
 
         liked = {}
         for movie_id in movie_ids:
+	    movie_id = movie_id[0]
             liked[movie_id] = 50
-
+	#print (liked)
         recommendations = get_matches(RATINGS_MATRIX, liked, NUM_RECOMMENDATIONS)
+	#print (recommendations)
         sql_query = "SELECT * FROM movie WHERE id = %s"
-        for index in NUM_RECOMMENDATIONS:
+        for index in range(NUM_RECOMMENDATIONS):
             movie_id = recommendations[index][1]
             movie_id = RATINGS_MATRIX.imdb_id(movie_id)
-            cursor.execute(sql_query, movie_id)
+            cursor.execute(sql_query, tuple([int(movie_id)]))
             movie_row = cursor.fetchone()
             movie = get_movie_details(movie_row)
             movie_list.append(movie)
         result = {"recommended_movies": movie_list}
+	#print (result)
         return jsonify(result) 
 
 
