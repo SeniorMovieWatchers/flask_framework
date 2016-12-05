@@ -1,6 +1,6 @@
 var CLIENT_ID = '567865399405-tn5a3lefjbea3phdaui3gh27a9q9r1cl.apps.googleusercontent.com';
 
-var SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
+var SCOPES = ["https://www.googleapis.com/auth/calendar"];
 
 /**
  * Check if current user has authorized this application.
@@ -22,10 +22,12 @@ function checkAuth() {
 function handleAuthResult(authResult) {
   if (authResult && !authResult.error) {
     // Hide auth UI, then load client library.
-  } else {
-    // Show auth UI, allowing the user to initiate authorization by
-    // clicking authorize button.
+    loadCalendarApi();
   }
+}
+
+function loadCalendarApi() {
+  gapi.client.load('calendar', 'v3', create_event);
 }
 
 /**
@@ -35,18 +37,19 @@ function handleAuthResult(authResult) {
  */
 function handleAuthClick(event) {
   gapi.auth.authorize(
-    {client_id: CLIENT_ID, scope: SCOPES, immediate: false},
+    {client_id: CLIENT_ID, scope: SCOPES, immediate: true},
     handleAuthResult);
   return false;
 }
 
-function createEvent(i) {
-  summary = $("#movie-title-" + i).text();
-  description = $("#movie-plot-" + i).text();
-  date = $("#start-date").val();
+var summary;
+var description;
+
+function create_event() {
+  date = $("#date").val();
   start_time = $("#start-time").val();
   end_time = $("#end-time").val();
-  email = $("email").val();
+  email = $("#email").val();
   var event = {
     'summary' : summary,
     'description' : description,
@@ -62,7 +65,8 @@ function createEvent(i) {
       {'email' : email}
     ]
   };
-
+  console.log(event);
+  
   var request = gapi.client.calendar.events.insert({
     'calendarId': 'primary',
     'resource': event
@@ -70,22 +74,12 @@ function createEvent(i) {
 
   request.execute(function(event) {
     $.notify({
-      message: 'Hello World' 
+      message: 'Successfully created calendar event' 
     });
   });
 }
 
-$('#start-time').timepicker({
-    'showDuration': true,
-    'timeFormat': 'H:i:s'
-});
-
-$('#start-date').datepicker({
-    'format': 'yyyy-m-d',
-    'autoclose': true
-});
-
-$('#end-time').timepicker({
-    'showDuration': true,
-    'timeFormat': 'H:i:s'
-});
+function createCalendar(i) {
+  summary = $("#movie-title-" + i).text();
+  description = $("#movie-plot-" + i).text();
+}

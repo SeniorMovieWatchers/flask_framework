@@ -251,7 +251,6 @@
         
         
         <div id="search-movie-results">
-            
             <div class="movie-info" id="movie-1">
                 <div class="movie-image">
                     <img id="img-1" src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTY1NDI1Nzg4OF5BMl5BanBnXkFtZTgwNjYxOTg4ODE@._V1_UX140_CR0,0,140,209_AL_.jpg">
@@ -260,7 +259,7 @@
                     <div class="movie-header">
                         <p id="movie-title-1" class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
                         <button id="favorite-btn-1" class="favorite-btn btn btn-primary" onclick="addFavs(1)">Add to Favorites</button>
-                        <button id="share-btn-1" class="share-btn btn btn-primary" data-toggle="modal" data-target="#share-modal">Share Movie with Friends</button>
+                        <button id="share-btn-1" class="share-btn btn btn-primary" onclick="createCalendar(1)" data-toggle="modal" data-target="#share-modal">Share Movie with Friends</button>
                     </div>
                     <div class="rating-div">
                         <p class="rating">Metascore: <span id="rating-1">54/100</span> </p>
@@ -279,7 +278,7 @@
                     <div class="movie-header">
                         <p id="movie-title-2" class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
                         <button id="favorite-btn-2" class="favorite-btn btn btn-primary" onclick="addFavs(2)">Add to Favorites</button>
-                        <button id="share-btn-2" class="share-btn btn btn-primary" data-toggle="modal" data-target="#share-modal">Share Movie with Friends</button>
+                        <button id="share-btn-2" class="share-btn btn btn-primary" onclick="createCalendar(2)" data-toggle="modal" data-target="#share-modal">Share Movie with Friends</button>
                     </div>
                     <div class="rating-div">
                         <p class="rating">Metascore: <span id="rating-2">54/100</span> </p>
@@ -298,7 +297,7 @@
                     <div class="movie-header">
                         <p id="movie-title-3" class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
                         <button id="favorite-btn-3" class="favorite-btn btn btn-primary" onclick="addFavs(3)">Add to Favorites</button>
-                        <button id="share-btn-3" class="share-btn btn btn-primary" data-toggle="modal" data-target="#share-modal">Share Movie with Friends</button>
+                        <button id="share-btn-3" class="share-btn btn btn-primary" onclick="createCalendar(3)" data-toggle="modal" data-target="#share-modal">Share Movie with Friends</button>
                     </div>
                     <div class="rating-div">
                         <p class="rating">Metascore: <span id="rating-3">54/100</span> </p>
@@ -317,7 +316,7 @@
                     <div class="movie-header">
                         <p id="movie-title-4" class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
                         <button id="favorite-btn-4" class="favorite-btn btn btn-primary" onclick="addFavs(4)">Add to Favorites</button>
-                        <button id="share-btn-4" class="share-btn btn btn-primary" data-toggle="modal" data-target="#share-modal">Share Movie with Friends</button>
+                        <button id="share-btn-4" class="share-btn btn btn-primary" onclick="createCalendar(4)" data-toggle="modal" data-target="#share-modal">Share Movie with Friends</button>
                     </div>
                     <div class="rating-div">
                         <p class="rating">Metascore: <span id="rating-3">54/100</span> </p>
@@ -336,7 +335,7 @@
                     <div class="movie-header">
                         <p id="movie-title-5" class="movie-title">Billy Lynn's Long Halftime Walk (2016)</p>
                         <button id="favorite-btn-5" class="favorite-btn btn btn-primary" onclick="addFavs(5)">Add to Favorites</button>
-                        <button id="share-btn-5" class="share-btn btn btn-primary" data-toggle="modal" data-target="#share-modal">Share Movie with Friends</button>
+                        <button id="share-btn-5" class="share-btn btn btn-primary" onclick="createCalendar(5)" data-toggle="modal" data-target="#share-modal">Share Movie with Friends</button>
                     </div>
                     <div class="rating-div">
                         <p class="rating">Metascore: <span id="rating-5">54/100</span> </p>
@@ -389,9 +388,13 @@
                     </div>
                     <div class="modal-body">
                         <div class="container" id="comment-container" style="width: 800px">
-                            <label for="email">Pick date and time:</label>
+                            <label for="email">Pick date:</label>
                             <input id="date" type="text" class="date start" />
-                            <input id="time" type="text" class="time start" />
+                        </div>
+                        <div class="container" id="comment-container" style="width: 800px">
+                            <label for="email">Pick time:</label>
+                            <input id="start-time" type="text" class="time start" /> to 
+                            <input id="end-time" type="text" class="time end" />
                         </div>
                         <div class="container" id="email-container" style="width: 800px">
                             <label for="email">Enter friends email:</label>
@@ -399,7 +402,7 @@
                         </div>
                     </div>
                     <div class="modal-footer" name="newcomment" id="footer-id" style="text-align: left;">
-                        <button class="share-btn btn btn-primary">Create Events</button>
+                        <button id="event-button" class="share-btn btn btn-primary" onclick="handleAuthClick(event)" data-dismiss="modal">Create Events</button>
                     </div>
                 </div>
             </div>

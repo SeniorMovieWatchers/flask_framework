@@ -169,13 +169,19 @@ $("#search-user-email").click(function() {
             data: JSON.stringify(new_data)
         });
 });
-$('#time').timepicker({
+
+$('#start-time').timepicker({
     'showDuration': true,
-    'timeFormat': 'g:ia'
+    'timeFormat': 'H:i:s'
+});
+
+$('#end-time').timepicker({
+    'showDuration': true,
+    'timeFormat': 'H:i:s'
 });
 
 $('#date').datepicker({
-    'format': 'yyyy-m-d',
+    'format': 'yyyy-mm-dd',
     'autoclose': true
 });
 
