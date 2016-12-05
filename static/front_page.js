@@ -103,10 +103,10 @@ function addFavs(i){
                       delay: 1000
                     });
                     $("#favorite-btn-"+i).addClass("disabled");
-                    updateRecs();
                 },
                 data: JSON.stringify(new_data)
         });
+        updateRecs();
     } else {
         $.notify({
           message: 'Please log in first' 

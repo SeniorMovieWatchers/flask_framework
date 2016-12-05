@@ -24,7 +24,7 @@ def sign_in():
             cursor.execute(sql_query, tuple([id, username, email]))
             database.commit()
             return "SUCCESS"
-
+    return "FAILED"
 
 @app.route("/search-movie", methods=["POST"])
 def search_movie():
@@ -69,6 +69,7 @@ def add_favorite():
         cursor.execute(sql_query, tuple([user_id, movie_id]))
         database.commit()
         return "SUCCESS"
+    return "FAILED"
 
 
 import ratings_matrix
