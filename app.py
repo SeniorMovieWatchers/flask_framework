@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 from db import database, cursor
-import ratings_matrix
-from similarity import get_matches
+#import ratings_matrix
+#from similarity import get_matches
 
 NUM_RECOMMENDATIONS = 5
 
@@ -72,14 +72,14 @@ def add_favorite():
         database.commit()
 	return "SUCCESS"
 
-
+'''
 @app.route("/get-recommendation", methods=["POST"])
 def get_recommendation():
     if request.method == "POST":
         RATINGS_PATH = '/srv/movielens/ratings_matrix.npz'
         RATINGS_MATRIX = ratings_matrix.ratings_matrix(RATINGS_PATH)
         user_id = request.json["user_id"]
-        sql_query = "SELECT movie_id FROM user_favorite WHERE user_id = %s"
+        sql_query = "SELECT DISTINCT movie_id FROM user_favorite WHERE user_id = %s"
         cursor.execute(sql_query, tuple([user_id]))
         movie_ids = cursor.fethchall()
         movie_list = []
@@ -102,7 +102,7 @@ def get_recommendation():
             movie_list.append(movie)
         result = {"recommended_movies": movie_list}
         return jsonify(result) 
-
+'''
 
 def get_movie_details(row):
     id = row[0]
