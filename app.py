@@ -71,7 +71,7 @@ def add_favorite():
         return "SUCCESS"
     return "FAILED"
 
-'''
+
 import ratings_matrix
 from similarity import get_matches
 @app.route("/get-recommendation", methods=["POST"])
@@ -106,7 +106,7 @@ def get_recommendation():
         result = {"recommended_movies": movie_list}
 	print (movie_list)
         return jsonify(result) 
-'''
+
 
 def get_movie_details(row):
     id = row[0]
