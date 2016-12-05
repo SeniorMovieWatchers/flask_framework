@@ -1,6 +1,7 @@
 updateRecs();
 
 function updateRecs(){
+    if (gapi.auth2 == null) return;
     var auth2 = gapi.auth2.getAuthInstance();
     if (auth2.isSignedIn.get()) {
     
