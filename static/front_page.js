@@ -18,7 +18,7 @@ function updateRecs(){
         contentType: 'application/json; charset=utf-8',
         success: function(result) {
 
-            movie_list = result['recomended_movies'];
+            movie_list = result['recommended_movies'];
             var i;
             for(i = 1; i <= movie_list.length; i++){
                 var movieid = "rec-img-" + i;
