@@ -5,6 +5,7 @@ function onSuccess(googleUser) {
     $('#profile_image').attr('src', googleUser.getBasicProfile().getImageUrl());
     $('#profile-header').show();
     signIn(googleUser);
+    updateRecs();
 }
 
 function signIn(googleUser) {
@@ -15,7 +16,7 @@ function signIn(googleUser) {
     };
 
     $.ajax({
-        url: 'http://fa16-cs411-50.cs.illinois.edu/home/signin',
+        url: 'http://fa16-cs411-50.cs.illinois.edu:5000/signin',
         dataType: 'JSON',
         type: 'POST',
         contentType: 'application/json; charset=utf-8',

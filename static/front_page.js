@@ -1,6 +1,5 @@
-updateRecs();
-
 function updateRecs(){
+    if (gapi == null || gapi.auth2 == null) return;
     var auth2 = gapi.auth2.getAuthInstance();
     if (auth2.isSignedIn.get()) {
     
@@ -11,19 +10,61 @@ function updateRecs(){
             user_id: userid
         };
     
+<<<<<<< HEAD
         $.ajax({
             url: 'http://fa16-cs411-50.cs.illinois.edu/home/get-recommendation',
             dataType: 'JSON',
             type: 'POST',
             contentType: 'application/json; charset=utf-8',
             success: function(result) {
+||||||| merged common ancestors
+    $.ajax({
+        url: 'http://fa16-cs411-50.cs.illinois.edu/home/search-movie',
+        dataType: 'JSON',
+        type: 'POST',
+        contentType: 'application/json; charset=utf-8',
+        success: function(result) {
+=======
+    $.ajax({
+        url: 'http://fa16-cs411-50.cs.illinois.edu:5000/get-recommendation',
+        dataType: 'JSON',
+        type: 'POST',
+        contentType: 'application/json; charset=utf-8',
+        success: function(result) {
+>>>>>>> 3313a1c3fda19779ab1c3732e851ced2174d95ff
 
+<<<<<<< HEAD
                 movie_list = result['recommended_movies'];
                 var i;
                 for(i = 1; i <= movie_list.length; i++){
                     var movieid = "rec-img-" + i;
                     $("#"+movieid).attr("src", movie_list[i-1]['url']);
                 }
+||||||| merged common ancestors
+            movie_list = result['recomended_movies'];
+            var i;
+            for(i = 1; i <= movie_list.length; i++){
+                var movieid = "rec-img-" + i;
+                $("#"+movieid).css("display", "block");
+            }
+            var j;
+            for(j = movie_list.length; j <= 5; j++){
+                var movieid = "rec-img-" + i;
+                $("#"+movieid).css("display", "none");
+            }
+=======
+            movie_list = result['recommended_movies'];
+            var i;
+            for(i = 1; i <= movie_list.length; i++){
+                var movieid = "rec-img-" + i;
+                $("#"+movieid).css("display", "block");
+            }
+            var j;
+            for(j = movie_list.length; j <= 5; j++){
+                var movieid = "rec-img-" + i;
+                $("#"+movieid).css("display", "none");
+            }
+>>>>>>> 3313a1c3fda19779ab1c3732e851ced2174d95ff
 
                 $("#recomendations-jumbotron").css("display", "block");
 
@@ -40,12 +81,11 @@ $("#search-movie").click(function() {
     };
     
     $.ajax({
-            url: 'http://fa16-cs411-50.cs.illinois.edu/home/search-movie',
+            url: 'http://fa16-cs411-50.cs.illinois.edu:5000/search-movie',
             dataType: 'JSON',
             type: 'POST',
             contentType: 'application/json; charset=utf-8',
             success: function(result) {
-                
                 movie_list = result['movie_list'];
                 var i;
                 for(i = 1; i <= movie_list.length; i++){
@@ -75,13 +115,9 @@ $("#search-movie").click(function() {
 });
 
 function addFavs(i){
- /*
-    $("#favorite-btn-"+i).click(function(){ 
-        $("#favorite-btn-"+i).addClass("disabled");
-    });
-   */ 
     var movieid = $("#movie-"+i).data("movie-db-id");
     var auth2 = gapi.auth2.getAuthInstance();
+    $("#favorite-btn-"+i).addClass("disabled");
     if (auth2.isSignedIn.get()) {
         
         var profile = auth2.currentUser.get().getBasicProfile();
@@ -93,7 +129,7 @@ function addFavs(i){
         };
 
         $.ajax({
-                url: 'http://fa16-cs411-50.cs.illinois.edu/home/add-favorite',
+                url: 'http://fa16-cs411-50.cs.illinois.edu:5000/add-favorite',
                 dataType: 'JSON',
                 type: 'POST',
                 contentType: 'application/json; charset=utf-8',
@@ -104,10 +140,15 @@ function addFavs(i){
                       delay: 1000
                     });
                     $("#favorite-btn-"+i).addClass("disabled");
-                    updateRecs();
                 },
                 data: JSON.stringify(new_data)
         });
+	$.notify({
+		message: 'Successfully added to your favorite movie list'
+	},{
+		delay: 1000
+	});
+        updateRecs();
     } else {
         $.notify({
           message: 'Please log in first' 
@@ -117,14 +158,13 @@ function addFavs(i){
     }
 }
 
-
 $("#search-user").click(function() {
     var new_data = {
         username : $("#user").val()
     };
 
     $.ajax({
-        url: 'http://fa16-cs411-50.cs.illinois.edu/home/search-user-username',
+        url: 'http://fa16-cs411-50.cs.illinois.edu:5000/search-user-username',
         dataType: 'JSON',
         type: 'POST',
         contentType: 'application/json; charset=utf-8',
@@ -152,7 +192,7 @@ $("#search-user-email").click(function() {
         };
 
         $.ajax({
-            url: 'http://fa16-cs411-50.cs.illinois.edu/home/search-user-email',
+            url: 'http://fa16-cs411-50.cs.illinois.edu:5000/search-user-email',
             dataType: 'JSON',
             type: 'POST',
             contentType: 'application/json; charset=utf-8',
@@ -173,6 +213,7 @@ $("#search-user-email").click(function() {
             data: JSON.stringify(new_data)
         });
 });
+<<<<<<< HEAD
 /*
 $("#favorite-btn-1").click(function(){ 
     $("#favorite-btn-1").addClass("disabled");
@@ -201,3 +242,32 @@ $('#date').datepicker({
 });
 
 
+||||||| merged common ancestors
+/*
+$("#favorite-btn-1").click(function(){ 
+    $("#favorite-btn-1").addClass("disabled");
+});
+$("#favorite-btn-2").click(function(){ 
+    $("#favorite-btn-2").addClass("disabled");
+});
+$("#favorite-btn-3").click(function(){ 
+    $("#favorite-btn-3").addClass("disabled");
+});
+$("#favorite-btn-4").click(function(){ 
+    $("#favorite-btn-4").addClass("disabled");
+});
+$("#favorite-btn-5").click(function(){ 
+    $("#favorite-btn-5").addClass("disabled");
+});
+*/
+$('#time').timepicker({
+    'showDuration': true,
+    'timeFormat': 'g:ia'
+});
+
+$('#date').datepicker({
+    'format': 'yyyy-m-d',
+    'autoclose': true
+});
+=======
+>>>>>>> 3313a1c3fda19779ab1c3732e851ced2174d95ff
