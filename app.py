@@ -92,9 +92,9 @@ def get_recommendation():
         for movie_id in movie_ids:
 	    movie_id = movie_id[0]
             liked[movie_id] = 50
-	#print (liked)
+	print (liked)
         recommendations = get_matches(RATINGS_MATRIX, liked, NUM_RECOMMENDATIONS)
-	#print (recommendations)
+	print (recommendations)
         sql_query = "SELECT * FROM movie WHERE id = %s"
         for index in range(NUM_RECOMMENDATIONS):
             movie_id = recommendations[index][1]
@@ -104,7 +104,7 @@ def get_recommendation():
             movie = get_movie_details(movie_row)
             movie_list.append(movie)
         result = {"recommended_movies": movie_list}
-	#print (result)
+	print (movie_list)
         return jsonify(result) 
 
 

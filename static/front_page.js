@@ -10,62 +10,18 @@ function updateRecs(){
             user_id: userid
         };
     
-<<<<<<< HEAD
-        $.ajax({
-            url: 'http://fa16-cs411-50.cs.illinois.edu/home/get-recommendation',
-            dataType: 'JSON',
-            type: 'POST',
-            contentType: 'application/json; charset=utf-8',
-            success: function(result) {
-||||||| merged common ancestors
-    $.ajax({
-        url: 'http://fa16-cs411-50.cs.illinois.edu/home/search-movie',
-        dataType: 'JSON',
-        type: 'POST',
-        contentType: 'application/json; charset=utf-8',
-        success: function(result) {
-=======
     $.ajax({
         url: 'http://fa16-cs411-50.cs.illinois.edu:5000/get-recommendation',
         dataType: 'JSON',
         type: 'POST',
         contentType: 'application/json; charset=utf-8',
         success: function(result) {
->>>>>>> 3313a1c3fda19779ab1c3732e851ced2174d95ff
-
-<<<<<<< HEAD
                 movie_list = result['recommended_movies'];
                 var i;
                 for(i = 1; i <= movie_list.length; i++){
                     var movieid = "rec-img-" + i;
                     $("#"+movieid).attr("src", movie_list[i-1]['url']);
                 }
-||||||| merged common ancestors
-            movie_list = result['recomended_movies'];
-            var i;
-            for(i = 1; i <= movie_list.length; i++){
-                var movieid = "rec-img-" + i;
-                $("#"+movieid).css("display", "block");
-            }
-            var j;
-            for(j = movie_list.length; j <= 5; j++){
-                var movieid = "rec-img-" + i;
-                $("#"+movieid).css("display", "none");
-            }
-=======
-            movie_list = result['recommended_movies'];
-            var i;
-            for(i = 1; i <= movie_list.length; i++){
-                var movieid = "rec-img-" + i;
-                $("#"+movieid).css("display", "block");
-            }
-            var j;
-            for(j = movie_list.length; j <= 5; j++){
-                var movieid = "rec-img-" + i;
-                $("#"+movieid).css("display", "none");
-            }
->>>>>>> 3313a1c3fda19779ab1c3732e851ced2174d95ff
-
                 $("#recomendations-jumbotron").css("display", "block");
 
             },
@@ -213,24 +169,6 @@ $("#search-user-email").click(function() {
             data: JSON.stringify(new_data)
         });
 });
-<<<<<<< HEAD
-/*
-$("#favorite-btn-1").click(function(){ 
-    $("#favorite-btn-1").addClass("disabled");
-});
-$("#favorite-btn-2").click(function(){ 
-    $("#favorite-btn-2").addClass("disabled");
-});
-$("#favorite-btn-3").click(function(){ 
-    $("#favorite-btn-3").addClass("disabled");
-});
-$("#favorite-btn-4").click(function(){ 
-    $("#favorite-btn-4").addClass("disabled");
-});
-$("#favorite-btn-5").click(function(){ 
-    $("#favorite-btn-5").addClass("disabled");
-});
-*/
 $('#time').timepicker({
     'showDuration': true,
     'timeFormat': 'g:ia'
@@ -241,33 +179,3 @@ $('#date').datepicker({
     'autoclose': true
 });
 
-
-||||||| merged common ancestors
-/*
-$("#favorite-btn-1").click(function(){ 
-    $("#favorite-btn-1").addClass("disabled");
-});
-$("#favorite-btn-2").click(function(){ 
-    $("#favorite-btn-2").addClass("disabled");
-});
-$("#favorite-btn-3").click(function(){ 
-    $("#favorite-btn-3").addClass("disabled");
-});
-$("#favorite-btn-4").click(function(){ 
-    $("#favorite-btn-4").addClass("disabled");
-});
-$("#favorite-btn-5").click(function(){ 
-    $("#favorite-btn-5").addClass("disabled");
-});
-*/
-$('#time').timepicker({
-    'showDuration': true,
-    'timeFormat': 'g:ia'
-});
-
-$('#date').datepicker({
-    'format': 'yyyy-m-d',
-    'autoclose': true
-});
-=======
->>>>>>> 3313a1c3fda19779ab1c3732e851ced2174d95ff
