@@ -82,6 +82,7 @@ $("#search-movie").click(function() {
 function addFavs(i){
     var movieid = $("#movie-"+i).data("movie-db-id");
     var auth2 = gapi.auth2.getAuthInstance();
+    $("#favorite-btn-"+i).addClass("disabled");
     if (auth2.isSignedIn.get()) {
         
         var profile = auth2.currentUser.get().getBasicProfile();
