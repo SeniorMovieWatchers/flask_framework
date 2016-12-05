@@ -4,38 +4,33 @@ function updateRecs(){
     var auth2 = gapi.auth2.getAuthInstance();
     if (auth2.isSignedIn.get()) {
     
-    var profile = auth2.currentUser.get().getBasicProfile();
-    var userid = profile.getId();
+        var profile = auth2.currentUser.get().getBasicProfile();
+        var userid = profile.getId();
 
-    var new_data = {
-        user_id: userid
-    };
+        var new_data = {
+            user_id: userid
+        };
     
-    $.ajax({
-        url: 'http://fa16-cs411-50.cs.illinois.edu/home/search-movie',
-        dataType: 'JSON',
-        type: 'POST',
-        contentType: 'application/json; charset=utf-8',
-        success: function(result) {
+        $.ajax({
+            url: 'http://fa16-cs411-50.cs.illinois.edu/home/get-recommendation',
+            dataType: 'JSON',
+            type: 'POST',
+            contentType: 'application/json; charset=utf-8',
+            success: function(result) {
 
-            movie_list = result['recomended_movies'];
-            var i;
-            for(i = 1; i <= movie_list.length; i++){
-                var movieid = "rec-img-" + i;
-                $("#"+movieid).css("display", "block");
-            }
-            var j;
-            for(j = movie_list.length; j <= 5; j++){
-                var movieid = "rec-img-" + i;
-                $("#"+movieid).css("display", "none");
-            }
+                movie_list = result['recommended_movies'];
+                var i;
+                for(i = 1; i <= movie_list.length; i++){
+                    var movieid = "rec-img-" + i;
+                    $("#"+movieid).attr("src", movie_list[i-1]['url']);
+                }
 
-            $("#recomendations-jumbotron").css("display", "block");
+                $("#recomendations-jumbotron").css("display", "block");
 
-        },
-        data: JSON.stringify(new_data)
-    });
-}
+            },
+            data: JSON.stringify(new_data)
+        });
+    }
 
 }
 
@@ -204,3 +199,5 @@ $('#date').datepicker({
     'format': 'yyyy-m-d',
     'autoclose': true
 });
+
+
