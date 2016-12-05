@@ -1,4 +1,4 @@
-//updateRecs();
+updateRecs();
 
 function updateRecs(){
     var auth2 = gapi.auth2.getAuthInstance();
@@ -12,7 +12,7 @@ function updateRecs(){
     };
     
     $.ajax({
-        url: 'http://fa16-cs411-50.cs.illinois.edu/home/search-movie',
+        url: 'http://fa16-cs411-50.cs.illinois.edu:5000/get-recommendation',
         dataType: 'JSON',
         type: 'POST',
         contentType: 'application/json; charset=utf-8',
@@ -45,7 +45,7 @@ $("#search-movie").click(function() {
     };
     
     $.ajax({
-            url: 'http://fa16-cs411-50.cs.illinois.edu/home/search-movie',
+            url: 'http://fa16-cs411-50.cs.illinois.edu:5000/search-movie',
             dataType: 'JSON',
             type: 'POST',
             contentType: 'application/json; charset=utf-8',
@@ -92,7 +92,7 @@ function addFavs(i){
         };
 
         $.ajax({
-                url: 'http://fa16-cs411-50.cs.illinois.edu/home/add-favorite',
+                url: 'http://fa16-cs411-50.cs.illinois.edu:5000/add-favorite',
                 dataType: 'JSON',
                 type: 'POST',
                 contentType: 'application/json; charset=utf-8',
