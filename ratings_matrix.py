@@ -74,8 +74,3 @@ class ratings_matrix:
 
     def user_count(self):
         return self.ratings.shape[0]
-if __name__ == '__main__':
-    ratings_path = '/srv/movielens/ratings_matrix.npz'
-    matrix = ratings_matrix()
-    matrix.save_to_path(ratings_path)
-    matrix.db.close()

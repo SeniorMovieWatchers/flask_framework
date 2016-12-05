@@ -42,4 +42,3 @@ def get_matches(ratings, watched, num_movies, sims = None):
                 total[movie_id] += rating / ratings.total_rating(other_id)
     choices = sorted([(total[movie] / sim_sum[movie], movie) for movie in movies], reverse = True)
     return choices
-#return [movie for score, movie in choices]

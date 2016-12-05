@@ -1,7 +1,5 @@
 from flask import Flask, render_template, request, jsonify
 from db import database, cursor
-#import ratings_matrix
-#from similarity import get_matches
 
 NUM_RECOMMENDATIONS = 5
 
@@ -72,7 +70,9 @@ def add_favorite():
         database.commit()
 	return "SUCCESS"
 
-'''
+
+import ratings_matrix
+from similarity import get_matches
 @app.route("/get-recommendation", methods=["POST"])
 def get_recommendation():
     if request.method == "POST":
@@ -102,7 +102,7 @@ def get_recommendation():
             movie_list.append(movie)
         result = {"recommended_movies": movie_list}
         return jsonify(result) 
-'''
+
 
 def get_movie_details(row):
     id = row[0]
