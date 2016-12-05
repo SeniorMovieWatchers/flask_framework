@@ -1,4 +1,4 @@
-updateRecs();
+//updateRecs();
 
 function updateRecs(){
     var auth2 = gapi.auth2.getAuthInstance();
@@ -50,7 +50,6 @@ $("#search-movie").click(function() {
             type: 'POST',
             contentType: 'application/json; charset=utf-8',
             success: function(result) {
-                
                 movie_list = result['movie_list'];
                 var i;
                 for(i = 1; i <= movie_list.length; i++){
@@ -80,11 +79,6 @@ $("#search-movie").click(function() {
 });
 
 function addFavs(i){
- /*
-    $("#favorite-btn-"+i).click(function(){ 
-        $("#favorite-btn-"+i).addClass("disabled");
-    });
-   */ 
     var movieid = $("#movie-"+i).data("movie-db-id");
     var auth2 = gapi.auth2.getAuthInstance();
     if (auth2.isSignedIn.get()) {
@@ -121,7 +115,6 @@ function addFavs(i){
         });
     }
 }
-
 
 $("#search-user").click(function() {
     var new_data = {
@@ -177,30 +170,4 @@ $("#search-user-email").click(function() {
             },
             data: JSON.stringify(new_data)
         });
-});
-/*
-$("#favorite-btn-1").click(function(){ 
-    $("#favorite-btn-1").addClass("disabled");
-});
-$("#favorite-btn-2").click(function(){ 
-    $("#favorite-btn-2").addClass("disabled");
-});
-$("#favorite-btn-3").click(function(){ 
-    $("#favorite-btn-3").addClass("disabled");
-});
-$("#favorite-btn-4").click(function(){ 
-    $("#favorite-btn-4").addClass("disabled");
-});
-$("#favorite-btn-5").click(function(){ 
-    $("#favorite-btn-5").addClass("disabled");
-});
-*/
-$('#time').timepicker({
-    'showDuration': true,
-    'timeFormat': 'g:ia'
-});
-
-$('#date').datepicker({
-    'format': 'yyyy-m-d',
-    'autoclose': true
 });

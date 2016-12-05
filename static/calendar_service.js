@@ -99,20 +99,26 @@ function appendPre(message) {
   pre.appendChild(textContent);
 }
 
-function createEvent() {
+function createEvent(i) {
+  summary = $("#movie-title-" + i).text();
+  description = $("#movie-plot-" + i).text();
+  date = $("#start-date").val();
+  start_time = $("#start-time").val();
+  end_time = $("#end-time").val();
+  email = $("email").val();
   var event = {
-    'summary' : ,
-    'description' : ,
+    'summary' : summary,
+    'description' : description,
     'start' : {
-      'dateTime' : ,
+      'dateTime' : date + "T" + start_time,
       'timeZone' : 'America/Chicago'
     },
     'end' : {
-      'dateTime' : ,
+      'dateTime' : date + "T" + end_time,
       'timeZone' : 'America/Chicago'
     },
     'attendees' : [
-      {'email' : }
+      {'email' : email}
     ]
   };
 
@@ -125,4 +131,20 @@ function createEvent() {
     $.notify({
       message: 'Hello World' 
     });
+  });
 }
+
+$('#start-time').timepicker({
+    'showDuration': true,
+    'timeFormat': 'H:i:s'
+});
+
+$('#start-date').datepicker({
+    'format': 'yyyy-m-d',
+    'autoclose': true
+});
+
+$('#end-time').timepicker({
+    'showDuration': true,
+    'timeFormat': 'H:i:s'
+});
