@@ -1,5 +1,3 @@
-updateRecs();
-
 function updateRecs(){
     if (gapi == null || gapi.auth2 == null) return;
     var auth2 = gapi.auth2.getAuthInstance();
