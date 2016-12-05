@@ -122,7 +122,7 @@ $("#search-user").click(function() {
     };
 
     $.ajax({
-        url: 'http://fa16-cs411-50.cs.illinois.edu/home/search-user-username',
+        url: 'http://fa16-cs411-50.cs.illinois.edu:5000/search-user-username',
         dataType: 'JSON',
         type: 'POST',
         contentType: 'application/json; charset=utf-8',
@@ -150,7 +150,7 @@ $("#search-user-email").click(function() {
         };
 
         $.ajax({
-            url: 'http://fa16-cs411-50.cs.illinois.edu/home/search-user-email',
+            url: 'http://fa16-cs411-50.cs.illinois.edu:5000/search-user-email',
             dataType: 'JSON',
             type: 'POST',
             contentType: 'application/json; charset=utf-8',
